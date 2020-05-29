@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "eslint": "^7.1.0",
+    "faker": "^4.1.0",
+    "faker-br": "^0.2.4"
+  }
+}
