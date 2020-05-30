@@ -190,3 +190,28 @@ VALUES
   'SgvpBc6EepEiHxy',
   4
 );
+INSERT INTO perfil(id_perfil,codigo, tipo)
+VALUES (1,'01','Administrador'),(2,'02', 'Visitante'),
+       (3,'03','Pesquisador'),(4,'04','Aluno'),
+       (5,'05','Bolsista'),(6,'06','Supervisor');
+INSERT INTO public.possui(
+      id_usuario, id_perfil)
+      VALUES 
+(1, 5),
+(2, 2),
+(3, 3),
+(4, 2),
+(5, 6),
+(6, 1),
+(7, 3),
+(8, 2),
+(9, 4),
+(10, 4),
+(11, 4),
+(12, 3),
+(13, 6),
+(14, 4),
+(15, 4);
+insert into servico(id_servico,nome, classe)
+values (1,'Alterar exame','alteração'),(2,'Solicitar exame', 'inserção'),
+	   (3,'Visualizar exame','visualização'),(4,'Remover exame', 'remoção');

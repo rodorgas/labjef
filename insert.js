@@ -80,7 +80,7 @@ function makePossui() {
     sql.push(`(${i}, ${randomNumber(1, 6)})`)
   }
 
-  console.log(sql.join(',') + ';');
+  console.log(sql.join(',\n') + ';');
 }
 
 const command = process.argv[2]

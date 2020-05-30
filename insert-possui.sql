@@ -1,60 +1,18 @@
 INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (1, 6);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (2, 6);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (3, 3);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (4, 2);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (5, 1);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (6, 5);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (7, 5);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (8, 1);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (9, 5);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (10, 1);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (11, 4);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (12, 3);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (13, 2);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (14, 5);
-  
-INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (15, 2);
-  
+      id_usuario, id_perfil)
+      VALUES 
+(1, 5),
+(2, 2),
+(3, 3),
+(4, 2),
+(5, 6),
+(6, 1),
+(7, 3),
+(8, 2),
+(9, 4),
+(10, 4),
+(11, 4),
+(12, 3),
+(13, 6),
+(14, 4),
+(15, 4);
