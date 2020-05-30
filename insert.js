@@ -12,10 +12,7 @@ function randomNumber(lower, upper) {
 
 
 function makeUsuario() {
-  const firstName = faker.name.firstName()
-  const lastName = faker.name.lastName()
-
-  const sql = `INSERT INTO usuario (
+  console.log(`INSERT INTO usuario (
     cpf,
     nome,
     area_de_pesquisa,
@@ -24,32 +21,72 @@ function makeUsuario() {
     login,
     senha,
     id_tutor
-  )
-  VALUES (
-    '${faker.br.cpf()}',
-    '${firstName} ${lastName}',
-    '${randomItem(areas)}',
-    '${randomItem(instituicoes)}',
-    '${faker.date.past('40', '1990').toISOString()}',
-    '${firstName.toLowerCase()}.${lastName.toLowerCase()}',
-    '${faker.internet.password()}',
-    ${Math.ceil(Math.random() * 9 + 20)}
-  );`
+    )
+    VALUES
+  `)
+
+  const sql = []
+
+  for (let i = 1; i <= 9; i++) {
+    const firstName = faker.name.firstName()
+    const lastName = faker.name.lastName()
+
+    sql.push(`(
+      ${i},
+      '${faker.br.cpf()}',
+      '${firstName} ${lastName}',
+      '${randomItem(areas)}',
+      '${randomItem(instituicoes)}',
+      '${faker.date.past('40', '1990').toISOString()}',
+      '${firstName.toLowerCase()}.${lastName.toLowerCase()}',
+      '${faker.internet.password()}',
+      ${Math.ceil(Math.random() * 9 + 20)}
+    )`)
+  }
+
+  for (let i = 1; i <= 5; i++) {
+    const firstName = faker.name.firstName()
+    const lastName = faker.name.lastName()
+    const tutor = randomItem([2, 4, 9])
+
+    sql.push(`(
+      ${i + 9},
+      '${faker.br.cpf()}',
+      '${firstName} ${lastName}',
+      '${randomItem(areas)}',
+      '${randomItem(instituicoes)}',
+      '${faker.date.past('40', '1990').toISOString()}',
+      '${firstName.toLowerCase()}.${lastName.toLowerCase()}',
+      '${faker.internet.password()}',
+      ${tutor}
+    )`)
+  }
+
+  console.log(sql.join(',') + ';')
 }
 
 function paciente() {
-
 }
 
-function makePossui(user, rangePerfil) {
-  const sql = (user, perfil) => `INSERT INTO public.possui(
-	id_usuario, id_perfil)
-	VALUES (${user}, ${perfil});
-  `
+function makePossui() {
+  console.log(`INSERT INTO public.possui(
+      id_usuario, id_perfil)
+      VALUES `
+  );
 
-  return sql(user, randomNumber(rangePerfil[0], rangePerfil[1]))
+  const sql = []
+
+  for (let i = 1; i <= 15; i++) {
+    sql.push(`(${i}, ${randomNumber(1, 6)})`)
+  }
+
+  console.log(sql.join(',') + ';');
 }
 
-for (let i = 20; i <= 30; i++) {
-  console.log(makePossui(i, [1, 6]))
+const command = process.argv[2]
+if (command === 'usuario') {
+  makeUsuario()
+}
+else if (command === 'possui') {
+  makePossui()
 }
