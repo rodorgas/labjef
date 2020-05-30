@@ -40,7 +40,7 @@ function makeUsuario() {
       '${faker.date.past('40', '1990').toISOString()}',
       '${firstName.toLowerCase()}.${lastName.toLowerCase()}',
       '${faker.internet.password()}',
-      ${Math.ceil(Math.random() * 9 + 20)}
+      NULL
     )`)
   }
 
@@ -55,7 +55,7 @@ function makeUsuario() {
       '${firstName} ${lastName}',
       '${randomItem(areas)}',
       '${randomItem(instituicoes)}',
-      '${faker.date.past('40', '1990').toISOString()}',
+      '${faker.date.past('30', '2010').toISOString()}',
       '${firstName.toLowerCase()}.${lastName.toLowerCase()}',
       '${faker.internet.password()}',
       ${tutor}
@@ -63,9 +63,6 @@ function makeUsuario() {
   }
 
   console.log(sql.join(',') + ';')
-}
-
-function paciente() {
 }
 
 function makePossui() {
@@ -83,10 +80,34 @@ function makePossui() {
   console.log(sql.join(',\n') + ';');
 }
 
+function makePaciente() {
+  console.log(`INSERT INTO public.paciente(
+    id_paciente, cpf, nome, endereco, nascimento)
+    VALUES`
+  );
+
+  const sql = []
+
+  for (let i = 1; i <= 10; i++) {
+    sql.push(`(
+      ${i},
+      '${faker.br.cpf()}',
+      '${faker.name.firstName()} ${faker.name.lastName()}',
+      '${faker.address.streetSuffix()} ${faker.name.firstName()}, ${Math.ceil((Math.random() * 1000))} - ${faker.address.city(1)}, ${faker.address.state()}',
+      '${faker.date.past('70', '2010').toISOString()}'
+    )`)
+  }
+
+  console.log(sql.join(',\n') + ';');
+}
+
 const command = process.argv[2]
 if (command === 'usuario') {
   makeUsuario()
 }
 else if (command === 'possui') {
   makePossui()
+}
+else if (command === 'paciente') {
+  makePaciente()
 }
