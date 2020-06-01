@@ -4,4 +4,7 @@ cat \
   insert-possui.sql \
   insert-servicos.sql \
   insert-paciente.sql \
+  insert-exame.sql \
+  insert-pertence.sql \
+  insert-amostra.sql
   > insert-all.sql

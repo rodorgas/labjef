@@ -66,6 +66,10 @@ function makeUsuario() {
 }
 
 function makePossui() {
+  /* Até o usuario_id = 10, só pode ter perfil 1, 3 e 6.
+   * Do 11 ao 15 (usuários tutelados), só pode ter 2, 4, 5 (perfis de
+   * tutelado)
+  */
   console.log(`INSERT INTO public.possui(
       id_usuario, id_perfil)
       VALUES `
@@ -74,7 +78,16 @@ function makePossui() {
   const sql = []
 
   for (let i = 1; i <= 15; i++) {
-    sql.push(`(${i}, ${randomNumber(1, 6)})`)
+    let perfil;
+
+    if (i <= 10) {
+      perfil = randomItem([1, 3, 6])
+    }
+    else {
+      perfil = randomItem([2, 4, 5])
+    }
+
+    sql.push(`(${i}, ${perfil})`)
   }
 
   console.log(sql.join(',\n') + ';');
