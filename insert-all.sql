@@ -215,3 +215,76 @@ INSERT INTO public.possui(
 insert into servico(id_servico,nome, classe)
 values (1,'Alterar exame','alteração'),(2,'Solicitar exame', 'inserção'),
 	   (3,'Visualizar exame','visualização'),(4,'Remover exame', 'remoção');
+INSERT INTO public.paciente(
+    id_paciente, cpf, nome, endereco, nascimento)
+    VALUES
+(
+      1,
+      '76676341220',
+      'Elias Nogueira',
+      'Alameda Lígia, 462 - Vila Caren, Pará',
+      '1950-07-21T05:17:18.590Z',
+    ),
+(
+      2,
+      '81786950812',
+      'Nubia Oliveira',
+      'Marginal Adinete, 450 - Vila Elizabeth, Amazonas',
+      '1992-01-24T06:39:22.552Z',
+    ),
+(
+      3,
+      '85496852080',
+      'Edval Saraiva',
+      'Viela Adinete, 35 - Nova Elislabelle, Rondônia',
+      '1945-09-30T12:26:41.101Z',
+    ),
+(
+      4,
+      '55537258870',
+      'Luzia Melo',
+      'Ponte Ivonise, 353 - Município de Tomiko, Rio de Janeiro',
+      '1953-11-15T12:14:31.466Z',
+    ),
+(
+      5,
+      '17551803220',
+      'Arethusa Carvalho',
+      'Viela Roselly, 730 - Vila Auto, Maranhão',
+      '1981-07-18T14:46:24.411Z',
+    ),
+(
+      6,
+      '63226269224',
+      'Claudemiro Pereira',
+      'Alameda Kazumi, 718 - Município de Filipe, Alagoas',
+      '1980-01-09T09:04:05.642Z',
+    ),
+(
+      7,
+      '45883116469',
+      'Elisena Franco',
+      'Viela Celia, 362 - Velha Adriana, Amapá',
+      '1972-08-17T23:43:59.472Z',
+    ),
+(
+      8,
+      '82228524425',
+      'Rudyard Carvalho',
+      'Avenida Silvania, 728 - Nova Ednei, Tocantins',
+      '1940-07-12T16:28:10.361Z',
+    ),
+(
+      9,
+      '32964614695',
+      'Weber Moraes',
+      'Avenida Amélia, 605 - Velha Erivaldo, Rio Grande do Sul',
+      '1968-07-26T07:11:49.894Z',
+    ),
+(
+      10,
+      '87878817642',
+      'Vladimir Carvalho',
+      'Rodovia Hercilia, 566 - Grande Lidiana, Alagoas',
+      '1954-01-02T03:29:02.956Z',
+    );
