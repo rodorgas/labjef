@@ -79,7 +79,8 @@ CREATE TABLE realiza (
     id_exame    INT NOT NULL references exame(id_exame),
     codigo_amostra    VARCHAR(255),
     data_de_realizacao TIMESTAMP,
-        UNIQUE (id_paciente, id_exame, data_de_realizacao)
+    data_de_solicitacao TIMESTAMP,
+        UNIQUE (id_paciente, id_exame, data_de_realizacao, data_de_solicitacao)
 );
 
 --Agregado amostra
