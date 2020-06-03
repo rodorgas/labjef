@@ -100,4 +100,4 @@ CREATE TABLE registra (
     id_exame INT NOT NULL references exame(id_exame),
     data_de_solicitacao DATE,
 	UNIQUE (id_usuario, id_servico, id_exame, data_de_solicitacao)
-)
+);

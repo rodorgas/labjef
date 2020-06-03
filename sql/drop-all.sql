@@ -1,2 +1,13 @@
-DROP TABLE usuario, amostra, exame, gerencia, paciente, perfil,
-pertence, possui, realiza, registra, servico, tutelamento
+DROP TABLE
+  usuario,
+  perfil,
+  possui,
+  servico,
+  paciente,
+  pertence,
+  exame,
+  amostra,
+  realiza,
+  gerencia,
+  registra,
+  tutelamento;
