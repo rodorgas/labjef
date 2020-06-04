@@ -108,7 +108,7 @@ ORDER BY "Quantidade";
 
 Este projeto contém alguns scripts quem auxiliam na geração dos scripts
 em SQL. Para gerar tudo, apenas rode `make`, e os scripts em SQL serão
-gerados na pasta `dist/`:
+gerados na pasta `dist/`.
 
 Os scripts de inserção utilizaram um pequeno programa em JavaScript que,
 com o auxílio da biblioteca `faker.js`, geram `INSERTs` a partir de um
@@ -125,11 +125,10 @@ esta seção descreve o funcionamento do script apenas para fins de
 documentação interna.
 
 Para gerar novos dados, basta instalar as dependências rodando `yarn` em
-`script`, e então `make script/insert.js {usuario, possui, paciente}`.
-Ao fazer isso, será necessário rescrever os scripts de inserção das
-outras tabelas manualmente, pois há muita lógica envolvendo chaves
-estrangeiras que não foram programadas (por exemplo, pesquisador não
-pode ser tutelado por visitante). O objetivo desse programa não é
-usar metaprogramação para fazer o EP inteiro, e sim automatizar a tarefa
-mais tediosa envolvendo algumas tabelas com muitos campos, ganhando
-produtividade.
+`script`, e então `make generate_faker`.  Ao fazer isso, será necessário
+rescrever os scripts de inserção das outras tabelas manualmente, pois há
+muita lógica envolvendo chaves estrangeiras que não foram programadas
+(por exemplo, não faz muito sentido um pesquisador ser tutelado por
+visitante). O objetivo desse programa não é usar metaprogramação para
+fazer o EP inteiro, e sim automatizar a tarefa mais tediosa envolvendo
+algumas tabelas com muitos campos, ganhando produtividade.
