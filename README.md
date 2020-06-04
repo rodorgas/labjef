@@ -182,5 +182,3 @@ tutelado por visitante). O objetivo desse programa não é usar
 metaprogramação para fazer o EP inteiro, e sim automatizar a tarefa mais
 tediosa envolvendo algumas tabelas com muitos campos, ganhando
 produtividade.
-
-## Autores
