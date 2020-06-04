@@ -1,5 +1,15 @@
 # EP de MAC0350
 
+O objetivo dessa segunda etapa do projeto é adicionar uma nova
+funcionalidade para o armazenamento histórico dos serviços utilizados
+pelos usuários num laboratório. Esse histórico armazenado será utilizado
+para auditoria, análise e predição da utilização de serviços utilizados
+pelos usuários.
+
+Autores:
+- Rodrigo Orem da Silva (8921590)
+- Wander de Souza (10737011)
+
 ## Modelos
 ### Modelo Conceitual
 Neste modelo, adicionamos o relacionamento `Registra`, que guarda as
@@ -174,7 +184,3 @@ tediosa envolvendo algumas tabelas com muitos campos, ganhando
 produtividade.
 
 ## Autores
-
-Rodrigo Orem da Silva (8921590)
-
-Wander de Souza (10737011)
