@@ -7,7 +7,9 @@
 ### Modelo Conceitual
 ![Modelo Lógico](models/modelo-logico.svg)
 
-## Inserção
+## Scripts SQL
+
+Os scripts SQL estão em `dist/`:
 
 - `create.sql`: criação das tabelas, chaves e índices;
 - `delete.sql`: remove todos os registros de todas as tabelas;
