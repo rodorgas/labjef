@@ -216,13 +216,6 @@ insert into servico(id_servico,nome, classe)
 values (1,'Alterar exame','alteração'),(2,'Solicitar exame', 'inserção'),
 	   (3,'Visualizar exame','visualização'),(4,'Remover exame', 'remoção'),
 	   (5,'Segunda via', 'visualização');
-insert into pertence(id_perfil, id_servico)
-values (1,1),(1,2),(1,3),(1,4),(1,5),
-       (2,3),
-	   (3,1),(3,2),(3,3),
-	   (4,3),
-	   (5,1),(5,2),(5,3), (5,5),
-	   (6,1),(6,2),(6,3),(6,4), (6,5);
 INSERT INTO paciente(
     id_paciente, cpf, nome, endereco, nascimento)
 VALUES
@@ -296,6 +289,13 @@ VALUES
     'Rua Gessé, 992 - Vila Wladimir, Piauí',
     '1993-06-19T15:24:21.486Z'
 );
+insert into pertence(id_perfil, id_servico)
+values (1,1),(1,2),(1,3),(1,4),(1,5),
+       (2,3),
+	   (3,1),(3,2),(3,3),
+	   (4,3),
+	   (5,1),(5,2),(5,3), (5,5),
+	   (6,1),(6,2),(6,3),(6,4), (6,5);
 insert into exame(id_exame, tipo, virus)
   values
   (1,'PCR','Sars-CoV-2'),
@@ -318,10 +318,10 @@ VALUES
   (7, 3, 9, 'Raspagem no pênis', 'Secreção do pênis'),
   (7, 2, 10, 'Coleta de sangue', 'Sangue');
 INSERT INTO realiza(
-	id_paciente, id_exame, codigo_amostra, data_de_solicitacao, data_de_realizacao)
+	id_paciente, id_exame, codigo_amostra, data_de_realizacao, data_de_solicitacao)
 VALUES
 (1, 1, 1, '2020-04-03 15:04:15', '2020-04-03 07:08:29'),
-(2, 2, 2, '2020-04-29 23:25:12', '2020-04-29 23:54:32'),
+(2, 2, 2, '2020-04-29 23:25:12', '2020-04-29 23:22:32'),
 (3, 3, 3, '2020-05-01 12:16:10', '2020-05-01 08:09:42'),
 (6, 4, 4, '2020-05-07 03:59:48', '2020-05-03 19:36:34'),
 (8, 5, 5, '2020-05-09 16:09:39', '2020-05-03 10:00:45'),

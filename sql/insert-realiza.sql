@@ -1,8 +1,8 @@
-INSERT INTO public.realiza(
-	id_paciente, id_exame, codigo_amostra, data_de_solicitacao, data_de_realizacao)
+INSERT INTO realiza(
+	id_paciente, id_exame, codigo_amostra, data_de_realizacao, data_de_solicitacao)
 VALUES
 (1, 1, 1, '2020-04-03 15:04:15', '2020-04-03 07:08:29'),
-(2, 2, 2, '2020-04-29 23:25:12', '2020-04-29 23:54:32'),
+(2, 2, 2, '2020-04-29 23:25:12', '2020-04-29 23:22:32'),
 (3, 3, 3, '2020-05-01 12:16:10', '2020-05-01 08:09:42'),
 (6, 4, 4, '2020-05-07 03:59:48', '2020-05-03 19:36:34'),
 (8, 5, 5, '2020-05-09 16:09:39', '2020-05-03 10:00:45'),

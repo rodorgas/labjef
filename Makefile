@@ -1,5 +1,6 @@
 FILE=${shell pwd}/script/tabelas.txt
 DROP_TABLES=$(shell paste -d, -s ${FILE})
+INSERTS=$(shell awk '{print "${shell pwd}/sql/insert-"$$0".sql"}' ${FILE} | paste -d" " -s -)
 
 all: insert create drop delete
 
@@ -9,7 +10,7 @@ generate_faker:
 	node script/insert.js paciente > sql/insert-paciente.sql
 
 insert:
-	$(echo "cat $(awk '{print "sql/insert-"$0".sql"}' ./script/tabelas.txt | paste -d" " -s -)") > dist/insert.sql
+	cat $(INSERTS) > dist/insert.sql
 
 create:
 	cp sql/create.sql dist
@@ -18,4 +19,4 @@ drop:
 	echo "DROP TABLE $(DROP_TABLES);" > dist/drop.sql
 
 delete:
-	awk '{print "DELETE FROM "$$0" CASCADE;"}' $(FILE) > dist/delete.sql
+	awk '{print "TRUNCATE "$$0" CASCADE;"}' $(FILE) > dist/delete.sql

@@ -1,4 +1,4 @@
-INSERT INTO public.paciente(
+INSERT INTO paciente(
     id_paciente, cpf, nome, endereco, nascimento)
 VALUES
 (

@@ -70,7 +70,7 @@ function makePossui() {
    * Do 11 ao 15 (usuários tutelados), só pode ter 2, 4, 5 (perfis de
    * tutelado)
   */
-  console.log(`INSERT INTO public.possui(
+  console.log(`INSERT INTO possui(
       id_usuario, id_perfil)
       VALUES `
   );
@@ -94,7 +94,7 @@ function makePossui() {
 }
 
 function makePaciente() {
-  console.log(`INSERT INTO public.paciente(
+  console.log(`INSERT INTO paciente(
     id_paciente, cpf, nome, endereco, nascimento)
     VALUES`
   );

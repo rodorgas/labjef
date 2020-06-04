@@ -1,4 +1,4 @@
-INSERT INTO public.amostra (
+INSERT INTO amostra (
   id_paciente, id_exame, codigo_amostra, metodo_de_coleta, material
 )
 VALUES

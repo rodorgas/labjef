@@ -1,4 +1,4 @@
-INSERT INTO public.possui(
+INSERT INTO possui(
       id_usuario, id_perfil)
       VALUES 
 (1, 5),
