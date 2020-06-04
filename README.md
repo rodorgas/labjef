@@ -14,7 +14,9 @@ Essa mudança foi necessária porque não é possível relacionar uma tupla
 em `Registra` com um tupla em `Realiza`. Acreditamos que essa não é a
 melhor forma de resolver esse problema, porque a `data de solicitação`
 passa a ter múltiplas fontes, ao invés de uma Fonte Única da Verdade®, o
-que pode gerar inconsistência nos dados. Mas acatamos a sugestão do
+que pode gerar inconsistência nos dados. Além disso, não é possível
+descobrir qual usuário solicitou determinado exame (não há
+relacionamento envolvendo usuário e realiza). Mas acatamos a sugestão do
 monitor no fórum por uma questão de comodidade.
 
 ![Modelo Conceitual](model/modelo-conceitual.svg)
@@ -38,6 +40,13 @@ Os scripts SQL estão em `dist/`:
 **4.1** Liste todos os exames realizados, com seus respectivos tipos,
 bem como os seus usuários com suas respectivas datas de solicitação e
 execução.
+
+Nota: ao invés de usuário, essa query obtém o paciente, conforme
+[retificação no fórum da
+disciplina](https://edisciplinas.usp.br/mod/forum/discuss.php?d=539785).
+
+> [...] o termo "usuário" se refere ao paciente, pois não temos uma
+> ligação entre a tabela realiza e a tabela usuário.
 
 ```SQL
 SELECT
@@ -64,13 +73,13 @@ FROM exame
 INNER JOIN realiza
       ON realiza.id_exame = exame.id_exame
 ORDER BY "Tempo de espera"
-LIMIT 5
+LIMIT 5;
 ```
 
 **4.3** Liste os serviços que podem ser utilizados pelos os usuários.
 
 ```SQL
-SELECT DISTINCT servico.nome,servico.classe
+SELECT DISTINCT servico.nome, servico.classe
 FROM servico
 INNER JOIN pertence
       ON servico.id_servico=pertence.id_servico
@@ -79,22 +88,34 @@ INNER JOIN perfil
 INNER JOIN possui
       ON perfil.id_perfil = possui.id_perfil
 INNER JOIN usuario
-      ON possui.id_usuario = usuario.id_usuario
+      ON possui.id_usuario = usuario.id_usuario;
 ```
 
 **4.4** Liste os serviços que podem ser utilizados por usuários
 tutelados (dependentes).
 
 ```SQL
-SELECT DISTINCT nome,classe
+SELECT DISTINCT nome, classe
 FROM servico
 INNER JOIN tutelamento
       ON servico.id_servico=tutelamento.id_servico
+;
 ```
 
 **4.5** Liste em ordem crescente o total de serviços utilizados
 agrupados pelos tipos de serviços disponíveis e pelo perfil dos
 usuários.
+
+Nota: nessa consulta, a semântica adotada para o perfil segue a
+[descrita pelo monitor no
+fórum](https://edisciplinas.usp.br/mod/forum/discuss.php?d=539808):
+
+> A semântica de perfil nesta query não é "o perfil que estava ativo na
+> realização", mas, se me lembro bem (por favor, me corrijam caso eu
+> esteja relembrando errado a aula), dos perfis que cada usuário possui,
+> ou seja, uma linha no histórico com um serviço do tipo S1 e um usuário
+> U que possui 2 perfis (P1 e P2) deve ser contabilizada tanto no
+> agrupamento P1S1 quanto no agrupamento P2S1.
 
 ```SQL
 SELECT
