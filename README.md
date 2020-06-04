@@ -2,10 +2,10 @@
 
 ## Modelos
 ### Modelo Conceitual
-![Modelo Conceitual](models/modelo-conceitual.svg)
+![Modelo Conceitual](model/modelo-conceitual.svg)
 
 ### Modelo Conceitual
-![Modelo Lógico](models/modelo-logico.svg)
+![Modelo Lógico](model/modelo-logico.svg)
 
 ## Scripts SQL
 
