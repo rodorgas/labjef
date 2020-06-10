@@ -1,10 +1,10 @@
 # EP de MAC0350
 
 O objetivo dessa segunda etapa do projeto é adicionar uma nova
-funcionalidade para o armazenamento histórico dos serviços utilizados
-pelos usuários num laboratório. Esse histórico armazenado será utilizado
-para auditoria, análise e predição da utilização de serviços utilizados
-pelos usuários.
+funcionalidade para o armazenamento histórico dos serviços utilizados
+pelos usuário num laboratório. Esse histórico armazenado será utilizado
+para auditoria, análise e predição da utilização de serviços utilizados
+pelos usuários.
 
 Autores:
 - Rodrigo Orem da Silva (8921590)
@@ -34,6 +34,7 @@ monitor no fórum por uma questão de comodidade.
 ### Modelo Lógico
 O modelo lógico é alterado para refletir as alterações descritas no
 modelo conceitual.
+
 ![Modelo Lógico](model/modelo-logico.svg)
 
 ## Scripts SQL
@@ -74,8 +75,8 @@ INNER JOIN paciente
 ;
 ```
 
-**4.2** Liste os 5 exames realizados com maior eficiência (diferença
-entre data de execução e data de solicitação).
+**4.2** Liste os 5 exames realizados com maior eficiência (diferença
+entre data de execução e data de solicitação).
 
 ```SQL
 SELECT tipo,virus, realiza.data_de_realizacao - realiza.data_de_solicitacao as "Tempo de espera"
@@ -86,7 +87,7 @@ ORDER BY "Tempo de espera"
 LIMIT 5;
 ```
 
-**4.3** Liste os serviços que podem ser utilizados pelos os usuários.
+**4.3** Liste os serviços que podem ser utilizados pelos os usuários.
 
 ```SQL
 SELECT DISTINCT servico.nome, servico.classe
@@ -101,7 +102,7 @@ INNER JOIN usuario
       ON possui.id_usuario = usuario.id_usuario;
 ```
 
-**4.4** Liste os serviços que podem ser utilizados por usuários
+**4.4** Liste os serviços que podem ser utilizados por usuários
 tutelados (dependentes).
 
 ```SQL
