@@ -1,7 +1,9 @@
 asgiref==3.2.10
 Django==3.0.7
 django-extensions==2.2.9
+iu==0.0.1
 psycopg2-binary==2.8.5
+python-dotenv==0.13.0
 pytz==2020.1
 six==1.15.0
 sqlparse==0.3.1
