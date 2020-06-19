@@ -5,7 +5,7 @@ CREATE TABLE pessoa (
     endereco    VARCHAR(255) NOT NULL,
     nascimento    DATE,
         UNIQUE (cpf)
-)
+);
 
 CREATE TABLE usuario (
     id_usuario    SERIAL NOT NULL PRIMARY KEY,
