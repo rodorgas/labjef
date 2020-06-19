@@ -10,4 +10,5 @@ DROP TABLE
   realiza,
   gerencia,
   registra,
-  tutelamento;
+  tutelamento,
+  pessoa;
