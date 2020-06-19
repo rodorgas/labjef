@@ -1,10 +1,218 @@
+INSERT INTO pessoa (
+  id_pessoa,
+  cpf,
+  nome,
+  endereco,
+  nascimento
+)
+VALUES
+
+(
+  1,
+  '83293332480',
+  'Lindenberg Batista',
+  'Rodovia Sávio, 834 - Botafogo, Rio de Janeiro',
+  '1969-10-31T00:42:09.284Z'
+),
+
+(
+  2,
+  '62294303717',
+  'Jaison Oliveira',
+  'Rua das Flores, 23 - Cidade Jardim, Tocantins',
+  '1955-06-03T03:08:28.481Z'
+),
+
+(
+  3,
+  '16537173353',
+  'André Pereira',
+  'Avenida Orem, 92 - República, Ceará',
+  '1975-04-03T09:42:28.392Z'
+),
+
+(
+  4,
+  '21683645839',
+  'Modesto Martins',
+  'Praça Degenerada, 1 - Parque das Flores, São Paulo',
+  '1961-09-10T17:55:23.153Z'
+),
+
+(
+  5,
+  '73843878250',
+  'Ide Pereira',
+  'Rua Descabida, 9912 - Morro do Totó, Amapá',
+  '1954-11-25T03:00:50.324Z'
+),
+
+(
+  6,
+  '02652119214',
+  'Yngledhan Xavier',
+  'Avenida Rupestre, 192 - Lapa, Rio Grande do Sul',
+  '1951-03-08T05:12:31.202Z'
+),
+
+(
+  7,
+  '14653181357',
+  'Charles Carvalho',
+  'Praça Bem Querida, 62 - Parque da Nicotina, Mato Grosso',
+  '1987-05-13T13:02:00.843Z'
+),
+
+(
+  8,
+  '42355198837',
+  'Marcloves Silva',
+  'Rua Realce Medieval, 91 - Butantã, Minas Gerais',
+  '1951-05-03T08:38:31.595Z'
+),
+
+(
+  9,
+  '53121214870',
+  'Lucia Carvalho',
+  'Avenida Jorges Bosques, 101 - Vila Weseslay, Distrito Federal',
+  '1950-10-18T04:17:00.559Z'
+),
+
+-- Tutorandos
+(
+  10,
+  '80557886694',
+  'Ruth Reis',
+  'Rodovia Intergalática, 404 - Vila Medieval, Amazonas',
+  '1971-02-22'
+),
+
+(
+  11,
+  '78936128868',
+  'Maraci Costa',
+  'Rua Guerreira Importal, 504 - Parque Delgado, Santa Catarina',
+  '1974-01-13'
+),
+
+(
+  12,
+  '27904634414',
+  'Aderito Braga',
+  'Avenida Realeza Fantástica, 500 - Hira, Paraná',
+  '1963-06-19'
+),
+
+(
+  13,
+  '92616832232',
+  'Thelma Saraiva',
+  'Rua Supresa Indevida, 200 - Repercussão, Alagoas',
+  '1975-01-20'
+),
+
+(
+  14,
+  '93754246348',
+  'Romina Batista',
+  'Avenida Abominável Jiló, 204 - Vila Fantástica, Rio Grande do Norte',
+  '1982-08-11'
+),
+
+(
+  15,
+  '87677173225',
+  'Ivaneide Reis',
+  'Rua das Chaleiras, 418 - Parque da Glória, Piauí',
+  '1956-03-09'
+),
+
+(
+    16,
+    '70474350185',
+    'Denner Oliveira',
+    'Rodovia Sávio, 337 - Vila Weseley, Tocantins',
+    '2000-09-02T21:28:22.040Z'
+),
+
+(
+    17,
+    '67912886710',
+    'Jürgen Reis',
+    'Viela Laís, 356 - Grande Evely, Mato Grosso',
+    '2003-09-06T01:33:28.759Z'
+),
+
+(
+    18,
+    '38930836500',
+    'Tomiko Braga',
+    'Avenida Lilian, 976 - Grande Celso, Pernambuco',
+    '1964-06-05T04:02:25.200Z'
+),
+
+(
+    19,
+    '83681837236',
+    'Jevetic Saraiva',
+    'Rua Elaine, 721 - Velha Susana, Amazonas',
+    '1953-04-21T16:34:20.488Z'
+),
+
+(
+    20,
+    '40888079443',
+    'Cristiani Braga',
+    'Avenida Sílvio, 790 - Vila Zuleno, Alagoas',
+    '1958-03-19T22:52:20.283Z'
+),
+
+(
+    21,
+    '72531952306',
+    'Yulle Carvalho',
+    'Travessa Toshio, 436 - Município de Analeia, Sergipe',
+    '1948-09-01T04:40:05.948Z'
+),
+
+(
+    22,
+    '96553777500',
+    'Ilson Macedo',
+    'Ponte Fabrisa, 336 - Vila Elma, São Paulo',
+    '1964-06-22T04:01:09.038Z'
+),
+
+(
+    23,
+    '61960354876',
+    'Joelmir Pereira',
+    'Alameda Giovani, 641 - Município de Osmundo, Acre',
+    '1953-12-03T15:48:22.079Z'
+),
+
+(
+    24,
+    '63122761718',
+    'Maricy Oliveira',
+    'Rodovia Christine, 106 - Município de Ereciano, Maranhão',
+    '1960-02-16T20:19:08.064Z'
+),
+
+(
+    25,
+    '70074874322',
+    'Toshio Carvalho',
+    'Rua Gessé, 992 - Vila Wladimir, Piauí',
+    '1993-06-19T15:24:21.486Z'
+)
+;
 INSERT INTO usuario (
   id_usuario,
   cpf,
-  nome,
   area_de_pesquisa,
   instituicao,
-  data_de_nascimento,
   login,
   senha,
   id_tutor
@@ -14,10 +222,8 @@ VALUES
 (
   1,
   '83293332480',
-  'Lindenberg Batista',
   'Computação',
   'UNESP',
-  '1969-10-31T00:42:09.284Z',
   'lindenberg.batista',
   'e3vE18PNblUcA9d',
   NULL
@@ -26,10 +232,8 @@ VALUES
 (
   2,
   '62294303717',
-  'Jaison Oliveira',
   'Geografia',
   'UFPR',
-  '1955-06-03T03:08:28.481Z',
   'jaison.oliveira',
   'CNs8rhmvPHB1r2b',
   NULL
@@ -38,10 +242,8 @@ VALUES
 (
   3,
   '16537173353',
-  'André Pereira',
   'Oceanografia',
   'UFRJ',
-  '1975-04-03T09:42:28.392Z',
   'andré.pereira',
   'A__si_BLqlQZGJC',
   NULL
@@ -50,10 +252,8 @@ VALUES
 (
   4,
   '21683645839',
-  'Modesto Martins',
   'Computação',
   'UNESP',
-  '1961-09-10T17:55:23.153Z',
   'modesto.martins',
   'mDMq1UdEWfIX4KK',
   NULL
@@ -62,10 +262,8 @@ VALUES
 (
   5,
   '73843878250',
-  'Ide Pereira',
   'Literatura Africana',
   'UFRJ',
-  '1954-11-25T03:00:50.324Z',
   'ide.pereira',
   'qy7QlyiN27PaVNr',
   NULL
@@ -74,10 +272,8 @@ VALUES
 (
   6,
   '02652119214',
-  'Yngledhan Xavier',
   'Biologia Molecular',
   'PUC',
-  '1951-03-08T05:12:31.202Z',
   'yngledhan.xavier',
   'iypMCD1C5gGo3Vr',
   NULL
@@ -86,10 +282,8 @@ VALUES
 (
   7,
   '14653181357',
-  'Charles Carvalho',
   'Literatura Africana',
   'IME',
-  '1987-05-13T13:02:00.843Z',
   'charles.carvalho',
   'CqefcYypgv4qXST',
   NULL
@@ -98,10 +292,8 @@ VALUES
 (
   8,
   '42355198837',
-  'Marcloves Silva',
   'Literatura Africana',
   'ITA',
-  '1951-05-03T08:38:31.595Z',
   'marcloves.silva',
   'dlYXkicWMINVTVi',
   NULL
@@ -110,10 +302,8 @@ VALUES
 (
   9,
   '53121214870',
-  'Lucia Carvalho',
   'Psicanálise',
   'INPA',
-  '1950-10-18T04:17:00.559Z',
   'lucia.carvalho',
   '4EjBdML9fxHGs_V',
   NULL
@@ -123,10 +313,8 @@ VALUES
 (
   10,
   '80557886694',
-  'Ruth Reis',
   'Homeopatia',
   'MACKENZIE',
-  '1959-06-01',
   'ruth.reis',
   '3SbuMlYpL5E6UvE',
   2
@@ -135,10 +323,8 @@ VALUES
 (
   11,
   '78936128868',
-  'Maraci Costa',
   'Direito Penal',
   'PUC',
-  '1974-01-13',
   'maraci.costa',
   'vzyyPR45NHc0LDp',
   8
@@ -147,10 +333,8 @@ VALUES
 (
   12,
   '27904634414',
-  'Aderito Braga',
   'Computação',
   'IMPA',
-  '1963-06-19',
   'aderito.braga',
   'iTFCVLu3ZxKYZqS',
   2),
@@ -158,10 +342,8 @@ VALUES
 (
   13,
   '92616832232',
-  'Thelma Saraiva',
   'Geografia',
   'UNICAMP',
-  '1975-01-20',
   'thelma.saraiva',
   'ozIXgTsqScmrAXv',
   5
@@ -170,10 +352,8 @@ VALUES
 (
   14,
   '93754246348',
-  'Romina Batista',
   'Física Nuclear',
   'IMPA',
-  '1982-08-11',
   'romina.batista',
   'AWFXMCAqCt8AuSh',
   2
@@ -182,10 +362,8 @@ VALUES
 (
   15,
   '87677173225',
-  'Ivaneide Reis',
   'Computação',
   'UNICAMP',
-  '1956-03-09',
   'ivaneide.santos',
   'SgvpBc6EepEiHxy',
   4
@@ -217,77 +395,47 @@ values (1,'Alterar exame','alteração'),(2,'Solicitar exame', 'inserção'),
 	   (3,'Visualizar exame','visualização'),(4,'Remover exame', 'remoção'),
 	   (5,'Segunda via', 'visualização');
 INSERT INTO paciente(
-    id_paciente, cpf, nome, endereco, nascimento)
+    id_paciente, cpf)
 VALUES
 (
     1,
-    '70474350185',
-    'Denner Oliveira',
-    'Rodovia Sávio, 337 - Vila Weseley, Tocantins',
-    '2000-09-02T21:28:22.040Z'
+    '70474350185'
 ),
 (
     2,
-    '67912886710',
-    'Jürgen Reis',
-    'Viela Laís, 356 - Grande Evely, Mato Grosso',
-    '2003-09-06T01:33:28.759Z'
+    '67912886710'
 ),
 (
     3,
-    '38930836500',
-    'Tomiko Braga',
-    'Avenida Lilian, 976 - Grande Celso, Pernambuco',
-    '1964-06-05T04:02:25.200Z'
+    '38930836500'
 ),
 (
     4,
-    '83681837236',
-    'Jevetic Saraiva',
-    'Rua Elaine, 721 - Velha Susana, Amazonas',
-    '1953-04-21T16:34:20.488Z'
+    '83681837236'
 ),
 (
     5,
-    '40888079443',
-    'Cristiani Braga',
-    'Avenida Sílvio, 790 - Vila Zuleno, Alagoas',
-    '1958-03-19T22:52:20.283Z'
+    '40888079443'
 ),
 (
     6,
-    '72531952306',
-    'Yulle Carvalho',
-    'Travessa Toshio, 436 - Município de Analeia, Sergipe',
-    '1948-09-01T04:40:05.948Z'
+    '72531952306'
 ),
 (
     7,
-    '96553777500',
-    'Ilson Macedo',
-    'Ponte Fabrisa, 336 - Vila Elma, São Paulo',
-    '1964-06-22T04:01:09.038Z'
+    '96553777500'
 ),
 (
     8,
-    '61960354876',
-    'Joelmir Pereira',
-    'Alameda Giovani, 641 - Município de Osmundo, Acre',
-    '1953-12-03T15:48:22.079Z'
+    '61960354876'
 ),
 (
     9,
-    '63122761718',
-    'Maricy Oliveira',
-    'Rodovia Christine, 106 - Município de Ereciano, Maranhão',
-    '1960-02-16T20:19:08.064Z'
+    '63122761718'
 ),
 (
     10,
-    '70074874322',
-    'Toshio Carvalho',
-    'Rua Gessé, 992 - Vila Wladimir, Piauí',
-    '1993-06-19T15:24:21.486Z'
+    '70074874322'
 );
 insert into pertence(id_perfil, id_servico)
 values (1,1),(1,2),(1,3),(1,4),(1,5),

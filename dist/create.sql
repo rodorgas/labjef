@@ -1,10 +1,17 @@
-CREATE TABLE usuario (
-    id_usuario    SERIAL NOT NULL PRIMARY KEY,
+CREATE TABLE pessoa (
+    id_pessoa    SERIAL NOT NULL PRIMARY KEY,
     cpf    CHAR(11) NOT NULL,
     nome    VARCHAR(255) NOT NULL,
+    endereco    VARCHAR(255) NOT NULL,
+    nascimento    DATE,
+        UNIQUE (cpf)
+);
+
+CREATE TABLE usuario (
+    id_usuario    SERIAL NOT NULL PRIMARY KEY,
+    cpf   CHAR(11) NOT NULL references pessoa(cpf),
     area_de_pesquisa    VARCHAR(255),
     instituicao    VARCHAR(255),
-    data_de_nascimento    DATE,
     login    VARCHAR(255) NOT NULL,
     senha    VARCHAR(255) NOT NULL,
     id_tutor   INT references usuario(id_usuario),
@@ -52,10 +59,7 @@ CREATE TABLE tutelamento (
 
 CREATE TABLE paciente (
     id_paciente    SERIAL NOT NULL PRIMARY KEY,
-    cpf    VARCHAR(11) NOT NULL,
-    nome    VARCHAR(255) NOT NULL,
-    endereco    VARCHAR(255) NOT NULL,
-    nascimento    DATE NOT NULL,
+    cpf   CHAR(11) NOT NULL references pessoa(cpf),
         UNIQUE (cpf)
 );
 

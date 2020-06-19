@@ -1,1 +1,1 @@
-DROP TABLE usuario,perfil,possui,servico,paciente,pertence,exame,amostra,realiza,gerencia,registra,tutelamento;
+DROP TABLE pessoa,usuario,perfil,possui,servico,paciente,pertence,exame,amostra,realiza,gerencia,registra,tutelamento;
