@@ -1,3 +1,5 @@
+SET search_path TO teste;
+
 TRUNCATE pessoa CASCADE;
 TRUNCATE usuario CASCADE;
 TRUNCATE perfil CASCADE;

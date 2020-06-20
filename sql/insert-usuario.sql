@@ -1,17 +1,17 @@
 INSERT INTO usuario (
-  id_usuario,
-  cpf,
+  id,
+  pessoa_id,
   area_de_pesquisa,
   instituicao,
   login,
   senha,
-  id_tutor
+  tutor_id
 )
 VALUES
 
 (
   1,
-  '83293332480',
+  1,
   'Computação',
   'UNESP',
   'lindenberg.batista',
@@ -21,7 +21,7 @@ VALUES
 
 (
   2,
-  '62294303717',
+  2,
   'Geografia',
   'UFPR',
   'jaison.oliveira',
@@ -31,7 +31,7 @@ VALUES
 
 (
   3,
-  '16537173353',
+  3,
   'Oceanografia',
   'UFRJ',
   'andré.pereira',
@@ -41,7 +41,7 @@ VALUES
 
 (
   4,
-  '21683645839',
+  4,
   'Computação',
   'UNESP',
   'modesto.martins',
@@ -51,7 +51,7 @@ VALUES
 
 (
   5,
-  '73843878250',
+  5,
   'Literatura Africana',
   'UFRJ',
   'ide.pereira',
@@ -61,7 +61,7 @@ VALUES
 
 (
   6,
-  '02652119214',
+  6,
   'Biologia Molecular',
   'PUC',
   'yngledhan.xavier',
@@ -71,7 +71,7 @@ VALUES
 
 (
   7,
-  '14653181357',
+  7,
   'Literatura Africana',
   'IME',
   'charles.carvalho',
@@ -81,7 +81,7 @@ VALUES
 
 (
   8,
-  '42355198837',
+  8,
   'Literatura Africana',
   'ITA',
   'marcloves.silva',
@@ -91,7 +91,7 @@ VALUES
 
 (
   9,
-  '53121214870',
+  9,
   'Psicanálise',
   'INPA',
   'lucia.carvalho',
@@ -102,7 +102,7 @@ VALUES
 -- Tutorandos
 (
   10,
-  '80557886694',
+  10,
   'Homeopatia',
   'MACKENZIE',
   'ruth.reis',
@@ -112,7 +112,7 @@ VALUES
 
 (
   11,
-  '78936128868',
+  11,
   'Direito Penal',
   'PUC',
   'maraci.costa',
@@ -122,7 +122,7 @@ VALUES
 
 (
   12,
-  '27904634414',
+  12,
   'Computação',
   'IMPA',
   'aderito.braga',
@@ -131,7 +131,7 @@ VALUES
 
 (
   13,
-  '92616832232',
+  13,
   'Geografia',
   'UNICAMP',
   'thelma.saraiva',
@@ -141,7 +141,7 @@ VALUES
 
 (
   14,
-  '93754246348',
+  14,
   'Física Nuclear',
   'IMPA',
   'romina.batista',
@@ -151,7 +151,7 @@ VALUES
 
 (
   15,
-  '87677173225',
+  15,
   'Computação',
   'UNICAMP',
   'ivaneide.santos',
@@ -159,4 +159,4 @@ VALUES
   4
 );
 
-ALTER SEQUENCE usuario_id_usuario_seq RESTART WITH 16;
+ALTER SEQUENCE usuario_id_seq RESTART WITH 16;

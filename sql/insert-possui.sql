@@ -1,6 +1,6 @@
 INSERT INTO possui(
-      id_usuario, id_perfil)
-      VALUES 
+      usuario_id, perfil_id)
+      VALUES
 (1, 5),
 (2, 2),
 (3, 3),
