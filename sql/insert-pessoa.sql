@@ -208,3 +208,5 @@ VALUES
     '1993-06-19T15:24:21.486Z'
 )
 ;
+
+ALTER SEQUENCE pessoa_id_pessoa_seq RESTART WITH 26;
