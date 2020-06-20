@@ -1,5 +1,5 @@
 INSERT INTO pessoa (
-  id_pessoa,
+  id,
   cpf,
   nome,
   endereco,
@@ -209,4 +209,4 @@ VALUES
 )
 ;
 
-ALTER SEQUENCE pessoa_id_pessoa_seq RESTART WITH 26;
+ALTER SEQUENCE pessoa_id_seq RESTART WITH 26;

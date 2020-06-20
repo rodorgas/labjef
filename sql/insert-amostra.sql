@@ -1,5 +1,5 @@
 INSERT INTO amostra (
-  id_paciente, id_exame, codigo_amostra, metodo_de_coleta, material
+  paciente_id, exame_id, codigo_amostra, metodo_de_coleta, material
 )
 VALUES
   (1, 1, 1, 'Raspagem de nasofaringe', 'Secreção de nasofaringe'),

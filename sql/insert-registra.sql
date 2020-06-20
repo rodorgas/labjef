@@ -1,5 +1,5 @@
 INSERT INTO registra
-  (id_usuario, id_servico,id_exame, data_de_solicitacao)
+  (usuario_id, servico_id,exame_id, data_de_solicitacao)
 VALUES
   (14,2,1,'2020-04-01 15:04:15'),(14,2,2,'2020-04-24 21:25:12'),
   (15,2,3,'2020-04-28 12:16:10'),(15,2,4,'2020-05-01 03:59:48'),

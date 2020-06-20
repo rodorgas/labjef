@@ -1,45 +1,45 @@
 INSERT INTO paciente(
-    id_paciente, cpf)
+    id, pessoa_id)
 VALUES
 (
     1,
-    '70474350185'
+    16
 ),
 (
     2,
-    '67912886710'
+    17
 ),
 (
     3,
-    '38930836500'
+    18
 ),
 (
     4,
-    '83681837236'
+    19
 ),
 (
     5,
-    '40888079443'
+    20
 ),
 (
     6,
-    '72531952306'
+    21
 ),
 (
     7,
-    '96553777500'
+    22
 ),
 (
     8,
-    '61960354876'
+    23
 ),
 (
     9,
-    '63122761718'
+    24
 ),
 (
     10,
-    '70074874322'
+    25
 );
 
-ALTER SEQUENCE paciente_id_paciente_seq RESTART WITH 11;
+ALTER SEQUENCE paciente_id_seq RESTART WITH 11;

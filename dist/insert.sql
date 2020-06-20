@@ -1,5 +1,7 @@
+SET search_path TO public;
+
 INSERT INTO pessoa (
-  id_pessoa,
+  id,
   cpf,
   nome,
   endereco,
@@ -209,21 +211,21 @@ VALUES
 )
 ;
 
-ALTER SEQUENCE pessoa_id_pessoa_seq RESTART WITH 26;
+ALTER SEQUENCE pessoa_id_seq RESTART WITH 26;
 INSERT INTO usuario (
-  id_usuario,
-  cpf,
+  id,
+  pessoa_id,
   area_de_pesquisa,
   instituicao,
   login,
   senha,
-  id_tutor
+  tutor_id
 )
 VALUES
 
 (
   1,
-  '83293332480',
+  1,
   'Computação',
   'UNESP',
   'lindenberg.batista',
@@ -233,7 +235,7 @@ VALUES
 
 (
   2,
-  '62294303717',
+  2,
   'Geografia',
   'UFPR',
   'jaison.oliveira',
@@ -243,7 +245,7 @@ VALUES
 
 (
   3,
-  '16537173353',
+  3,
   'Oceanografia',
   'UFRJ',
   'andré.pereira',
@@ -253,7 +255,7 @@ VALUES
 
 (
   4,
-  '21683645839',
+  4,
   'Computação',
   'UNESP',
   'modesto.martins',
@@ -263,7 +265,7 @@ VALUES
 
 (
   5,
-  '73843878250',
+  5,
   'Literatura Africana',
   'UFRJ',
   'ide.pereira',
@@ -273,7 +275,7 @@ VALUES
 
 (
   6,
-  '02652119214',
+  6,
   'Biologia Molecular',
   'PUC',
   'yngledhan.xavier',
@@ -283,7 +285,7 @@ VALUES
 
 (
   7,
-  '14653181357',
+  7,
   'Literatura Africana',
   'IME',
   'charles.carvalho',
@@ -293,7 +295,7 @@ VALUES
 
 (
   8,
-  '42355198837',
+  8,
   'Literatura Africana',
   'ITA',
   'marcloves.silva',
@@ -303,7 +305,7 @@ VALUES
 
 (
   9,
-  '53121214870',
+  9,
   'Psicanálise',
   'INPA',
   'lucia.carvalho',
@@ -314,7 +316,7 @@ VALUES
 -- Tutorandos
 (
   10,
-  '80557886694',
+  10,
   'Homeopatia',
   'MACKENZIE',
   'ruth.reis',
@@ -324,7 +326,7 @@ VALUES
 
 (
   11,
-  '78936128868',
+  11,
   'Direito Penal',
   'PUC',
   'maraci.costa',
@@ -334,7 +336,7 @@ VALUES
 
 (
   12,
-  '27904634414',
+  12,
   'Computação',
   'IMPA',
   'aderito.braga',
@@ -343,7 +345,7 @@ VALUES
 
 (
   13,
-  '92616832232',
+  13,
   'Geografia',
   'UNICAMP',
   'thelma.saraiva',
@@ -353,7 +355,7 @@ VALUES
 
 (
   14,
-  '93754246348',
+  14,
   'Física Nuclear',
   'IMPA',
   'romina.batista',
@@ -363,7 +365,7 @@ VALUES
 
 (
   15,
-  '87677173225',
+  15,
   'Computação',
   'UNICAMP',
   'ivaneide.santos',
@@ -371,16 +373,16 @@ VALUES
   4
 );
 
-ALTER SEQUENCE usuario_id_usuario_seq RESTART WITH 16;
-INSERT INTO perfil(id_perfil,codigo, tipo)
+ALTER SEQUENCE usuario_id_seq RESTART WITH 16;
+INSERT INTO perfil(id,codigo, tipo)
 VALUES (1,'01','Administrador'),(2,'02', 'Visitante'),
        (3,'03','Pesquisador'),(4,'04','Aluno'),
        (5,'05','Bolsista'),(6,'06','Supervisor');
 
-ALTER SEQUENCE perfil_id_perfil_seq RESTART WITH 7;
+ALTER SEQUENCE perfil_id_seq RESTART WITH 7;
 INSERT INTO possui(
-      id_usuario, id_perfil)
-      VALUES 
+      usuario_id, perfil_id)
+      VALUES
 (1, 5),
 (2, 2),
 (3, 3),
@@ -396,66 +398,66 @@ INSERT INTO possui(
 (13, 6),
 (14, 4),
 (15, 4);
-insert into servico(id_servico,nome, classe)
+insert into servico(id,nome, classe)
 values (1,'Alterar exame','alteração'),(2,'Solicitar exame', 'inserção'),
 	   (3,'Visualizar exame','visualização'),(4,'Remover exame', 'remoção'),
 	   (5,'Segunda via', 'visualização');
 
 
-ALTER SEQUENCE servico_id_servico_seq RESTART WITH 6;
+ALTER SEQUENCE servico_id_seq RESTART WITH 6;
 INSERT INTO paciente(
-    id_paciente, cpf)
+    id, pessoa_id)
 VALUES
 (
     1,
-    '70474350185'
+    16
 ),
 (
     2,
-    '67912886710'
+    17
 ),
 (
     3,
-    '38930836500'
+    18
 ),
 (
     4,
-    '83681837236'
+    19
 ),
 (
     5,
-    '40888079443'
+    20
 ),
 (
     6,
-    '72531952306'
+    21
 ),
 (
     7,
-    '96553777500'
+    22
 ),
 (
     8,
-    '61960354876'
+    23
 ),
 (
     9,
-    '63122761718'
+    24
 ),
 (
     10,
-    '70074874322'
+    25
 );
 
-ALTER SEQUENCE paciente_id_paciente_seq RESTART WITH 11;
-insert into pertence(id_perfil, id_servico)
+ALTER SEQUENCE paciente_id_seq RESTART WITH 11;
+insert into pertence(perfil_id, servico_id)
 values (1,1),(1,2),(1,3),(1,4),(1,5),
        (2,3),
 	   (3,1),(3,2),(3,3),
 	   (4,3),
 	   (5,1),(5,2),(5,3), (5,5),
 	   (6,1),(6,2),(6,3),(6,4), (6,5);
-INSERT INTO exame(id_exame, tipo, virus)
+INSERT INTO exame(id, tipo, virus)
   values
   (1,'PCR','Sars-CoV-2'),
   (2,'Sorologia','Sars-Cov-2'),
@@ -463,9 +465,9 @@ INSERT INTO exame(id_exame, tipo, virus)
   (4,'Papanicolau','HPV'),
   (5,'PCR','H1N1');
 
-ALTER SEQUENCE exame_id_exame_seq RESTART WITH 6;
+ALTER SEQUENCE exame_id_seq RESTART WITH 6;
 INSERT INTO amostra (
-  id_paciente, id_exame, codigo_amostra, metodo_de_coleta, material
+  paciente_id, exame_id, codigo_amostra, metodo_de_coleta, material
 )
 VALUES
   (1, 1, 1, 'Raspagem de nasofaringe', 'Secreção de nasofaringe'),
@@ -479,7 +481,7 @@ VALUES
   (7, 3, 9, 'Raspagem no pênis', 'Secreção do pênis'),
   (7, 2, 10, 'Coleta de sangue', 'Sangue');
 INSERT INTO realiza(
-	id_paciente, id_exame, codigo_amostra, data_de_realizacao, data_de_solicitacao)
+	paciente_id, exame_id, codigo_amostra, data_de_realizacao, data_de_solicitacao)
 VALUES
 (1, 1, 1, '2020-04-03 15:04:15', '2020-04-03 07:08:29'),
 (2, 2, 2, '2020-04-29 23:25:12', '2020-04-29 23:22:32'),
@@ -492,7 +494,7 @@ VALUES
 (7, 3, 9, '2020-05-22 14:19:10', '2020-05-21 07:41:18'),
 (7, 2, 10, '2020-05-26 08:23:47', '2020-05-25 16:18:53');
 insert into gerencia (
-  id_servico, id_exame
+  servico_id, exame_id
 )
 values
 (1,1),
@@ -523,8 +525,10 @@ values
 (5,1),
 (5,2),
 (5,3);
+
+ALTER SEQUENCE gerencia_id_seq RESTART WITH 6;
 INSERT INTO registra
-  (id_usuario, id_servico,id_exame, data_de_solicitacao)
+  (usuario_id, servico_id,exame_id, data_de_solicitacao)
 VALUES
   (14,2,1,'2020-04-01 15:04:15'),(14,2,2,'2020-04-24 21:25:12'),
   (15,2,3,'2020-04-28 12:16:10'),(15,2,4,'2020-05-01 03:59:48'),
@@ -543,7 +547,7 @@ VALUES
   (14,5,1,'2020-10-01 11:04:15'),(14,5,2,'2020-07-24 19:35:12'),
   (15,5,3,'2020-08-30 08:16:10');
 INSERT INTO tutelamento(
-	id_usuario_tutelado, id_tutor, id_servico, id_perfil, data_de_inicio, data_de_termino)
+	usuario_tutelado_id, tutor_id, servico_id, perfil_id, data_de_inicio, data_de_termino)
 	VALUES (10,2,3,4,'2016-03-02','2018-03-02'),
 		   (11,8,3,4,'2016-07-02', NULL),
 		   (12,2,3,2,'2019-04-02','2019-04-02'),

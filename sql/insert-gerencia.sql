@@ -1,5 +1,5 @@
 insert into gerencia (
-  id_servico, id_exame
+  servico_id, exame_id
 )
 values
 (1,1),
@@ -30,3 +30,5 @@ values
 (5,1),
 (5,2),
 (5,3);
+
+ALTER SEQUENCE gerencia_id_seq RESTART WITH 6;

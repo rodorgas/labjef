@@ -1,5 +1,5 @@
 INSERT INTO tutelamento(
-	id_usuario_tutelado, id_tutor, id_servico, id_perfil, data_de_inicio, data_de_termino)
+	usuario_tutelado_id, tutor_id, servico_id, perfil_id, data_de_inicio, data_de_termino)
 	VALUES (10,2,3,4,'2016-03-02','2018-03-02'),
 		   (11,8,3,4,'2016-07-02', NULL),
 		   (12,2,3,2,'2019-04-02','2019-04-02'),

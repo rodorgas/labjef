@@ -1,4 +1,4 @@
-insert into pertence(id_perfil, id_servico)
+insert into pertence(perfil_id, servico_id)
 values (1,1),(1,2),(1,3),(1,4),(1,5),
        (2,3),
 	   (3,1),(3,2),(3,3),
