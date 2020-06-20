@@ -86,6 +86,7 @@ class Usuario_Possui_Perfil(models.Model):
             models.UniqueConstraint(
                 fields=['usuario', 'perfil'], name='unique_usuario_perfil')
         ]
+        db_table = 'possui'
 
 # Tutelamento
 
