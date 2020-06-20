@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Usuario, Perfil, Usuario_Possui_Perfil, Servico, Exame
+from .models import Usuario, Perfil, Usuario_Possui_Perfil, Servico, Exame, Pessoa
 
 
 class PerfilInline(admin.TabularInline):
@@ -12,6 +12,7 @@ class UsuarioAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Usuario, UsuarioAdmin)
+admin.site.register(Pessoa)
 admin.site.register(Perfil)
 admin.site.register(Servico)
 admin.site.register(Exame)
