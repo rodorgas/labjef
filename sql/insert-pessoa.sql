@@ -209,4 +209,4 @@ VALUES
 )
 ;
 
-ALTER SEQUENCE pessoa_id_pessoa_seq RESTART WITH 25;
+ALTER SEQUENCE pessoa_id_pessoa_seq RESTART WITH 26;
