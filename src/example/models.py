@@ -16,7 +16,7 @@ class Pessoa(models.Model):
         ]
 
     def __str__(self):
-        return self.id_pessoa + ' ' + self.nome
+        return str(self.id_pessoa) + ' ' + self.nome
 
 
 def valida_servico(value):
@@ -78,7 +78,7 @@ class Usuario(models.Model):
         ]
 
     def __str__(self):
-        return self.id_usuario
+        return str(self.id_usuario) + ' ' + self.cpf.nome
 
 
 # relacionamento Possui
