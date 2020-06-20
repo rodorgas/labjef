@@ -1,4 +1,4 @@
-SET search_path TO teste;
+SET search_path TO public;
 
 TRUNCATE pessoa CASCADE;
 TRUNCATE usuario CASCADE;

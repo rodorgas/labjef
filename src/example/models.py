@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 
 
 class Pessoa(models.Model):
-    id_pessoa = models.AutoField(primary_key=True)
     cpf = models.CharField(max_length=255, unique=True)
     nome = models.CharField(max_length=255)
     endereco = models.CharField(max_length=255)
@@ -16,7 +15,7 @@ class Pessoa(models.Model):
         ]
 
     def __str__(self):
-        return str(self.id_pessoa) + ' ' + self.nome
+        return str(self.id) + ' ' + self.nome
 
 
 def valida_servico(value):
@@ -27,8 +26,6 @@ def valida_servico(value):
 
 
 class Servico(models.Model):
-
-    id_servico = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=255)
     classe = models.CharField(max_length=255, validators=[valida_servico])
 
@@ -44,7 +41,6 @@ class Servico(models.Model):
 
 
 class Perfil(models.Model):
-    id_perfil = models.AutoField(primary_key=True)
     codigo = models.CharField(max_length=255)
     tipo = models.CharField(max_length=255)
 
@@ -58,15 +54,14 @@ class Perfil(models.Model):
 
 
 class Usuario(models.Model):
-    id_usuario = models.AutoField(primary_key=True)
-    cpf = models.ForeignKey(Pessoa, to_field='cpf',
-                            db_column='cpf', on_delete=models.PROTECT)
+    pessoa = models.ForeignKey(Pessoa,
+                               on_delete=models.PROTECT)
     area_de_pesquisa = models.CharField(max_length=255, blank=True, null=True)
     instituicao = models.CharField(max_length=255, blank=True, null=True)
     login = models.CharField(max_length=255)
     senha = models.CharField(max_length=255)
-    id_tutor = models.ForeignKey(
-        "self", db_column='id_tutor', on_delete=models.PROTECT, null=True, blank=True)
+    tutor = models.ForeignKey(
+        "self", on_delete=models.PROTECT, null=True, blank=True)
     # Esse campo não aparece nas tabelas do bd. Utilizado somente para compatibilidade com a criacao
     # de objetos
     perfis = models.ManyToManyField(Perfil, through='Usuario_Possui_Perfil')
@@ -74,11 +69,11 @@ class Usuario(models.Model):
     class Meta:
         db_table = 'usuario'
         constraints = [
-            models.UniqueConstraint(fields=['cpf'], name='unique_cpf_pessoa')
+            models.UniqueConstraint(fields=['pessoa'], name='unique_pessoa')
         ]
 
     def __str__(self):
-        return str(self.id_usuario) + ' ' + self.cpf.nome
+        return str(self.id) + ' ' + self.pessoa.nome
 
 
 # relacionamento Possui
@@ -96,18 +91,18 @@ class Usuario_Possui_Perfil(models.Model):
 
 
 class Tutelamento(models.Model):
-    id_usuario_tutelado = models.ForeignKey(Usuario, on_delete=models.PROTECT)
-    id_tutor = models.ForeignKey(
+    usuario_tutelado = models.ForeignKey(Usuario, on_delete=models.PROTECT)
+    tutor = models.ForeignKey(
         Usuario, on_delete=models.PROTECT, related_name='+')
-    id_servico = models.ForeignKey(Servico, on_delete=models.PROTECT)
-    id_perfil = models.ForeignKey(Perfil, on_delete=models.PROTECT)
+    servico = models.ForeignKey(Servico, on_delete=models.PROTECT)
+    perfil = models.ForeignKey(Perfil, on_delete=models.PROTECT)
     data_de_inicio = models.DateField('data_de_inicio')
     data_de_termino = models.DateField('data_de_termino', null=True)
 
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['id_usuario_tutelado', 'id_tutor', 'id_servico', 'id_perfil'], name='unique_tutelamento')
+                fields=['usuario_tutelado', 'tutor', 'servico', 'perfil'], name='unique_tutelamento')
         ]
 
 
@@ -124,7 +119,6 @@ class Pertence(models.Model):
 
 
 class Exame(models.Model):
-    id_exame = models.AutoField(primary_key=True)
     tipo = models.CharField(max_length=255)
     virus = models.CharField(max_length=255)
 
@@ -140,16 +134,16 @@ class Exame(models.Model):
 
 
 class Registra(models.Model):
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT)
-    id_servico = models.ForeignKey(Servico, on_delete=models.PROTECT)
-    id_exame = models.ForeignKey(Exame, on_delete=models.PROTECT)
+    usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT)
+    servico = models.ForeignKey(Servico, on_delete=models.PROTECT)
+    exame = models.ForeignKey(Exame, on_delete=models.PROTECT)
     data_de_solicitacao = models.DateField(blank=True)
 
     class Meta:
         db_table = 'registra'
         constraints = [
             models.UniqueConstraint(
-                fields=['id_usuario', 'id_servico', 'id_exame', 'data_de_solicitacao'], name='unique_registra'
+                fields=['usuario', 'servico', 'exame', 'data_de_solicitacao'], name='unique_registra'
             )
         ]
 
