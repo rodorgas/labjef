@@ -1,6 +1,7 @@
 FILE=${shell pwd}/script/tabelas.txt
-DROP_TABLES=$(shell paste -d, -s ${FILE})
+DROP_TABLES=$(shell awk '{print "DROP TABLE " $$0 " CASCADE;\n"}' ${FILE} | paste -d" " -s -)
 INSERTS=$(shell awk '{print "${shell pwd}/sql/insert-"$$0".sql"}' ${FILE} | paste -d" " -s -)
+SCHEMA="teste"
 
 all: insert create drop delete
 
@@ -10,13 +11,17 @@ generate_faker:
 	node script/insert.js paciente > sql/insert-paciente.sql
 
 insert:
-	cat $(INSERTS) > dist/insert.sql
+	echo "SET search_path TO ${SCHEMA};\n" > dist/insert.sql
+	cat $(INSERTS) >> dist/insert.sql
 
 create:
-	cp sql/create.sql dist
+	echo "SET search_path TO ${SCHEMA};\n" > dist/create.sql
+	cat sql/create.sql >> dist/create.sql
 
 drop:
-	echo "DROP TABLE $(DROP_TABLES);" > dist/drop.sql
+	echo "SET search_path TO ${SCHEMA};\n" > dist/drop.sql
+	echo "$(DROP_TABLES)" >> dist/drop.sql
 
 delete:
-	awk '{print "TRUNCATE "$$0" CASCADE;"}' $(FILE) > dist/delete.sql
+	echo "SET search_path TO ${SCHEMA};\n" > dist/delete.sql
+	awk '{print "TRUNCATE "$$0" CASCADE;"}' $(FILE) >> dist/delete.sql
