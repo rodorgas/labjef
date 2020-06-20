@@ -158,3 +158,5 @@ VALUES
   'SgvpBc6EepEiHxy',
   4
 );
+
+ALTER SEQUENCE usuario_id_usuario_seq RESTART WITH 16;

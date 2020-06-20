@@ -41,3 +41,5 @@ VALUES
     10,
     '70074874322'
 );
+
+ALTER SEQUENCE paciente_id_paciente_seq RESTART WITH 11;
