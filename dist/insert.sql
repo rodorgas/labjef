@@ -208,6 +208,8 @@ VALUES
     '1993-06-19T15:24:21.486Z'
 )
 ;
+
+ALTER SEQUENCE pessoa_id_pessoa_seq RESTART WITH 26;
 INSERT INTO usuario (
   id_usuario,
   cpf,
@@ -368,10 +370,14 @@ VALUES
   'SgvpBc6EepEiHxy',
   4
 );
+
+ALTER SEQUENCE usuario_id_usuario_seq RESTART WITH 16;
 INSERT INTO perfil(id_perfil,codigo, tipo)
 VALUES (1,'01','Administrador'),(2,'02', 'Visitante'),
        (3,'03','Pesquisador'),(4,'04','Aluno'),
        (5,'05','Bolsista'),(6,'06','Supervisor');
+
+ALTER SEQUENCE perfil_id_perfil_seq RESTART WITH 7;
 INSERT INTO possui(
       id_usuario, id_perfil)
       VALUES 
@@ -394,6 +400,9 @@ insert into servico(id_servico,nome, classe)
 values (1,'Alterar exame','alteração'),(2,'Solicitar exame', 'inserção'),
 	   (3,'Visualizar exame','visualização'),(4,'Remover exame', 'remoção'),
 	   (5,'Segunda via', 'visualização');
+
+
+ALTER SEQUENCE servico_id_servico_seq RESTART WITH 6;
 INSERT INTO paciente(
     id_paciente, cpf)
 VALUES
@@ -437,6 +446,8 @@ VALUES
     10,
     '70074874322'
 );
+
+ALTER SEQUENCE paciente_id_paciente_seq RESTART WITH 11;
 insert into pertence(id_perfil, id_servico)
 values (1,1),(1,2),(1,3),(1,4),(1,5),
        (2,3),
@@ -444,13 +455,15 @@ values (1,1),(1,2),(1,3),(1,4),(1,5),
 	   (4,3),
 	   (5,1),(5,2),(5,3), (5,5),
 	   (6,1),(6,2),(6,3),(6,4), (6,5);
-insert into exame(id_exame, tipo, virus)
+INSERT INTO exame(id_exame, tipo, virus)
   values
   (1,'PCR','Sars-CoV-2'),
   (2,'Sorologia','Sars-Cov-2'),
   (3,'Peniscopia','HPV'),
   (4,'Papanicolau','HPV'),
   (5,'PCR','H1N1');
+
+ALTER SEQUENCE exame_id_exame_seq RESTART WITH 6;
 INSERT INTO amostra (
   id_paciente, id_exame, codigo_amostra, metodo_de_coleta, material
 )

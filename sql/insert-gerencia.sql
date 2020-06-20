@@ -30,5 +30,3 @@ values
 (5,1),
 (5,2),
 (5,3);
-
-ALTER SEQUENCE gerencia_id_servico_seq RESTART WITH 6;
