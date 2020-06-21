@@ -1,19 +1,36 @@
 from django.contrib import admin
-from .models import Usuario, Perfil, Usuario_Possui_Perfil, Servico, Exame, Pessoa
+from . import models
 
 
 class PerfilInline(admin.TabularInline):
-    model = Usuario_Possui_Perfil
+    model = models.Usuario_Possui_Perfil
     extra = 1
 
 
 class UsuarioAdmin(admin.ModelAdmin):
     inlines = (PerfilInline,)
+    list_display = ('nome', 'login', 'get_perfis')
+
+    def nome(self, obj):
+        """Nome"""
+        return obj.pessoa.nome
+
+    def get_perfis(self, obj):
+        """Perfis"""
+        perfis = [x['tipo'] for x in obj.perfis.values()]
+
+        return ', '.join(perfis)
+
+    get_perfis.short_description = 'Perfis'
 
 
-admin.site.register(Usuario, UsuarioAdmin)
-admin.site.register(Pessoa)
-admin.site.register(Perfil)
-admin.site.register(Servico)
-admin.site.register(Exame)
-# admin.site.register(Usuario_Possui_Perfil)
+admin.site.register(models.Usuario, UsuarioAdmin)
+admin.site.register(models.Pessoa)
+admin.site.register(models.Perfil)
+admin.site.register(models.Servico)
+admin.site.register(models.Exame)
+admin.site.register(models.Registra)
+admin.site.register(models.Paciente)
+admin.site.register(models.Amostra)
+admin.site.register(models.Realiza)
+# admin.site.register(models.Usuario_Possui_Perfil)

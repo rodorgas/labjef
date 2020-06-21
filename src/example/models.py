@@ -2,6 +2,50 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 
+class Paciente(models.Model):
+    pessoa = models.OneToOneField('Pessoa', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'paciente'
+
+
+class Amostra(models.Model):
+    paciente = models.ForeignKey('Paciente', models.DO_NOTHING)
+    exame = models.ForeignKey('Exame', models.DO_NOTHING)
+    codigo_amostra = models.CharField(max_length=255)
+    metodo_de_coleta = models.CharField(max_length=255)
+    material = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'amostra'
+        unique_together = (('paciente', 'exame', 'codigo_amostra'),)
+
+
+class Realiza(models.Model):
+    paciente = models.ForeignKey('Paciente', models.DO_NOTHING)
+    exame = models.ForeignKey('Exame', models.DO_NOTHING)
+    codigo_amostra = models.CharField(max_length=255, blank=True, null=True)
+    data_de_realizacao = models.DateTimeField(blank=True, null=True)
+    data_de_solicitacao = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'realiza'
+        unique_together = (('paciente', 'exame', 'data_de_realizacao', 'data_de_solicitacao'),)
+
+
+class Gerencia(models.Model):
+    servico = models.ForeignKey('Servico', models.DO_NOTHING)
+    exame = models.ForeignKey('Exame', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'gerencia'
+        unique_together = (('servico', 'exame'),)
+
+
 class Pessoa(models.Model):
     cpf = models.CharField(max_length=255, unique=True)
     nome = models.CharField(max_length=255)
@@ -149,4 +193,4 @@ class Registra(models.Model):
         ]
 
     def __str__(self):
-        return self.data_de_solicitacao
+        return str(self.data_de_solicitacao)
