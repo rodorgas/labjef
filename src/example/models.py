@@ -64,7 +64,8 @@ class Usuario(models.Model):
         "self", on_delete=models.PROTECT, null=True, blank=True)
     # Esse campo não aparece nas tabelas do bd. Utilizado somente para compatibilidade com a criacao
     # de objetos
-    perfis = models.ManyToManyField(Perfil, through='Usuario_Possui_Perfil')
+    perfis = models.ManyToManyField(
+        Perfil, through='Possui')
 
     class Meta:
         db_table = 'usuario'
@@ -77,14 +78,14 @@ class Usuario(models.Model):
 
 
 # relacionamento Possui
-class Usuario_Possui_Perfil(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT)
-    perfil = models.ForeignKey(Perfil, on_delete=models.PROTECT)
+class Possui(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    perfil = models.ForeignKey(Perfil, on_delete=models.CASCADE)
 
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['usuario', 'perfil'], name='unique_usuario_perfil')
+                fields=['usuario', 'perfil'], name='unique_possui')
         ]
         db_table = 'possui'
 
@@ -101,6 +102,7 @@ class Tutelamento(models.Model):
     data_de_termino = models.DateField('data_de_termino', null=True)
 
     class Meta:
+        db_table = "tutelamento"
         constraints = [
             models.UniqueConstraint(
                 fields=['usuario_tutelado', 'tutor', 'servico', 'perfil'], name='unique_tutelamento')
@@ -113,6 +115,7 @@ class Pertence(models.Model):
     perfil = models.ForeignKey(Perfil, on_delete=models.PROTECT)
 
     class Meta:
+        db_table = "pertence"
         constraints = [
             models.UniqueConstraint(
                 fields=['servico', 'perfil'], name='unique_servico_perfil')

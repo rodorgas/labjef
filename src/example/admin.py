@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Usuario, Perfil, Usuario_Possui_Perfil, Servico, Exame, Pessoa
+from .models import Usuario, Perfil, Possui, Servico, Exame, Pessoa
 
 
 class PerfilInline(admin.TabularInline):
-    model = Usuario_Possui_Perfil
+    model = Possui
     extra = 1
 
 
@@ -16,4 +16,4 @@ admin.site.register(Pessoa)
 admin.site.register(Perfil)
 admin.site.register(Servico)
 admin.site.register(Exame)
-# admin.site.register(Usuario_Possui_Perfil)
+# admin.site.register(Possui)
