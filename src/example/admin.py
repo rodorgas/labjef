@@ -3,7 +3,7 @@ from . import models
 
 
 class PerfilInline(admin.TabularInline):
-    model = models.Usuario_Possui_Perfil
+    model = models.Possui
     extra = 1
 
 
@@ -33,4 +33,3 @@ admin.site.register(models.Registra)
 admin.site.register(models.Paciente)
 admin.site.register(models.Amostra)
 admin.site.register(models.Realiza)
-# admin.site.register(models.Usuario_Possui_Perfil)
