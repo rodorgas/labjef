@@ -30,7 +30,7 @@ jobs:
       ## Dependencies with pip + requirements.txt
       - name: Install dependencies with pip + requirements.txt
         run: |
-          python3 -m venv venv
+          python -m venv venv
           venv/bin/pip install -r requirements.txt
           #
       # Now we move the dependencies where super-linter can see them
