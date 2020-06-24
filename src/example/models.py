@@ -9,6 +9,9 @@ class Paciente(models.Model):
         managed = False
         db_table = 'paciente'
 
+    def __str__(self):
+        return str(self.pessoa.id) + ' '+self.pessoa.nome
+
 
 class Amostra(models.Model):
     paciente = models.ForeignKey('Paciente', models.DO_NOTHING)
@@ -20,7 +23,13 @@ class Amostra(models.Model):
     class Meta:
         managed = False
         db_table = 'amostra'
-        unique_together = (('paciente', 'exame', 'codigo_amostra'),)
+        constraints = [
+            models.UniqueConstraint(
+                fields=['paciente', 'exame', 'codigo_amostra'], name='unique_paciente_exame_codigo')
+        ]
+
+    def __str__(self):
+        return 'Amostra '+self.codigo_amostra
 
 
 class Realiza(models.Model):
@@ -33,7 +42,10 @@ class Realiza(models.Model):
     class Meta:
         managed = False
         db_table = 'realiza'
-        unique_together = (('paciente', 'exame', 'data_de_realizacao', 'data_de_solicitacao'),)
+        constraints = [
+            models.UniqueConstraint(
+                fields=['paciente', 'exame', 'data_de_realizacao', 'data_de_solicitacao'], name='unique_key')
+        ]
 
 
 class Gerencia(models.Model):
@@ -43,7 +55,9 @@ class Gerencia(models.Model):
     class Meta:
         managed = False
         db_table = 'gerencia'
-        unique_together = (('servico', 'exame'),)
+        constraints = [models.UniqueConstraint(
+            fields=['servico', 'exame'], name='unique_servico_exame')
+        ]
 
 
 class Pessoa(models.Model):
@@ -196,4 +210,4 @@ class Registra(models.Model):
         ]
 
     def __str__(self):
-        return str(self.data_de_solicitacao)
+        return str(self.id)+' - ' + str(self.data_de_solicitacao)
