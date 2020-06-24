@@ -9,9 +9,6 @@ class Paciente(models.Model):
         managed = False
         db_table = 'paciente'
 
-    def __str__(self):
-        return str(self.pessoa.id) + ' '+self.pessoa.nome
-
 
 class Amostra(models.Model):
     paciente = models.ForeignKey('Paciente', models.DO_NOTHING)
@@ -27,9 +24,6 @@ class Amostra(models.Model):
             models.UniqueConstraint(
                 fields=['paciente', 'exame', 'codigo_amostra'], name='unique_paciente_exame_codigo')
         ]
-
-    def __str__(self):
-        return 'Amostra '+self.codigo_amostra
 
 
 class Realiza(models.Model):
@@ -72,9 +66,6 @@ class Pessoa(models.Model):
             models.UniqueConstraint(fields=['cpf'], name='unique_cpf')
         ]
 
-    def __str__(self):
-        return str(self.id) + ' ' + self.nome
-
 
 def valida_servico(value):
     if value not in ['visualização', 'inserção', 'alteração', 'remoção']:
@@ -94,18 +85,12 @@ class Servico(models.Model):
                 fields=['nome', 'classe'], name='unique_nome_classe')
         ]
 
-    def __str__(self):
-        return self.nome
-
 
 class Perfil(models.Model):
     codigo = models.CharField(max_length=255)
     tipo = models.CharField(max_length=255)
 
     servicos = models.ManyToManyField(Servico, through='Pertence')
-
-    def __str__(self):
-        return self.codigo + ' ' + self.tipo
 
     class Meta:
         db_table = 'perfil'
@@ -130,9 +115,6 @@ class Usuario(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['pessoa'], name='unique_pessoa')
         ]
-
-    def __str__(self):
-        return str(self.id) + ' ' + self.pessoa.nome
 
 
 # relacionamento Possui
@@ -190,9 +172,6 @@ class Exame(models.Model):
             models.UniqueConstraint(
                 fields=['tipo', 'virus'], name='unique_tipo_virus')
         ]
-
-    def __str__(self):
-        return self.tipo + ' - ' + self.virus
 
 
 class Registra(models.Model):
