@@ -27,10 +27,18 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Here I use the system Python, which is 3.6.
+      # You may install another Python version with the proper action
+      - name: Install missing python packages
+        run: sudo apt-get install -y --no-install-recommends python3-venv python3-setuptools
+
       ## Dependencies with pip + requirements.txt
       - name: Install dependencies with pip + requirements.txt
         run: |
-          python -m venv venv
+          python3 -m venv venv
           venv/bin/pip install -r requirements.txt
           #
       # Now we move the dependencies where super-linter can see them
