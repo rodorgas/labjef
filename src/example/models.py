@@ -2,6 +2,64 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 
+class Paciente(models.Model):
+    pessoa = models.OneToOneField('Pessoa', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'paciente'
+
+    def __str__(self):
+        return str(self.pessoa.id) + ' '+self.pessoa.nome
+
+
+class Amostra(models.Model):
+    paciente = models.ForeignKey('Paciente', models.DO_NOTHING)
+    exame = models.ForeignKey('Exame', models.DO_NOTHING)
+    codigo_amostra = models.CharField(max_length=255)
+    metodo_de_coleta = models.CharField(max_length=255)
+    material = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'amostra'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['paciente', 'exame', 'codigo_amostra'], name='unique_paciente_exame_codigo')
+        ]
+
+    def __str__(self):
+        return 'Amostra '+self.codigo_amostra
+
+
+class Realiza(models.Model):
+    paciente = models.ForeignKey('Paciente', models.DO_NOTHING)
+    exame = models.ForeignKey('Exame', models.DO_NOTHING)
+    codigo_amostra = models.CharField(max_length=255, blank=True, null=True)
+    data_de_realizacao = models.DateTimeField(blank=True, null=True)
+    data_de_solicitacao = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'realiza'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['paciente', 'exame', 'data_de_realizacao', 'data_de_solicitacao'], name='unique_key')
+        ]
+
+
+class Gerencia(models.Model):
+    servico = models.ForeignKey('Servico', models.DO_NOTHING)
+    exame = models.ForeignKey('Exame', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'gerencia'
+        constraints = [models.UniqueConstraint(
+            fields=['servico', 'exame'], name='unique_servico_exame')
+        ]
+
+
 class Pessoa(models.Model):
     cpf = models.CharField(max_length=255, unique=True)
     nome = models.CharField(max_length=255)
@@ -152,4 +210,4 @@ class Registra(models.Model):
         ]
 
     def __str__(self):
-        return self.data_de_solicitacao
+        return str(self.id)+' - ' + str(self.data_de_solicitacao)

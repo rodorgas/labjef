@@ -7,11 +7,11 @@
     <p>TOTAL: {{query1_result_list | length}}</p>
     {% for row in query1_result_list %}
     <ul>
-      <li><p>CPF: {{row.cpf}}</p> </li>
-      <li><p>nome: {{row.nome}}</p> </li>
-      <li><p>login: {{row.login}}</p> </li>
-      <li><p>data de nasc: {{row.data_de_nascimento}}</p> </li>
-      <li><p>area de pesquisa: {{row.area_de_pesquisa}}</p> </li>
+      <li><p><strong>CPF</strong>: {{row.pessoa.cpf}}</p> </li>
+      <li><p><strong>Nome</strong>: {{row.pessoa.nome}}</p> </li>
+      <li><p><strong>Login</strong>: {{row.login}}</p> </li>
+      <li><p><strong>Data de nascimento</strong>: {{row.pessoa.nascimento}}</p> </li>
+      <li><p><strong>Área de pesquisa</strong>: {{row.area_de_pesquisa}}</p> </li>
     </ul>
     <br>
     {% endfor %}
