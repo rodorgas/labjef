@@ -21,6 +21,7 @@ class UsuarioAdmin(admin.ModelAdmin):
         """Nome do tutor"""
         if obj.tutor is not None:
             return obj.tutor.pessoa.nome
+        return None
 
     def nome(self, obj):
         """Nome"""

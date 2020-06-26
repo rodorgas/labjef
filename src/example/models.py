@@ -38,7 +38,10 @@ class Realiza(models.Model):
         db_table = 'realiza'
         constraints = [
             models.UniqueConstraint(
-                fields=['paciente', 'exame', 'data_de_realizacao', 'data_de_solicitacao'], name='unique_key')
+                fields=[
+                    'paciente', 'exame', 'data_de_realizacao',
+                    'data_de_solicitacao'],
+                name='unique_key')
         ]
 
 
@@ -50,8 +53,7 @@ class Gerencia(models.Model):
         managed = False
         db_table = 'gerencia'
         constraints = [models.UniqueConstraint(
-            fields=['servico', 'exame'], name='unique_servico_exame')
-        ]
+            fields=['servico', 'exame'], name='unique_servico_exame')]
 
 
 class Pessoa(models.Model):
@@ -145,7 +147,8 @@ class Tutelamento(models.Model):
         db_table = "tutelamento"
         constraints = [
             models.UniqueConstraint(
-                fields=['usuario_tutelado', 'tutor', 'servico', 'perfil'], name='unique_tutelamento')
+                fields=['usuario_tutelado', 'tutor', 'servico', 'perfil'],
+                name='unique_tutelamento')
         ]
 
 
@@ -184,7 +187,8 @@ class Registra(models.Model):
         db_table = 'registra'
         constraints = [
             models.UniqueConstraint(
-                fields=['usuario', 'servico', 'exame', 'data_de_solicitacao'], name='unique_registra'
+                fields=['usuario', 'servico', 'exame', 'data_de_solicitacao'],
+                name='unique_registra'
             )
         ]
 
