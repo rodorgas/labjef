@@ -129,7 +129,7 @@ class Usuario(models.Model):
         ]
 
     def __str__(self):
-        return str(self.id) + ' - ' + str(self.pessoa.nome)
+        return `{self.id} - {self.pessoa.nome}`
 
 
 # relacionamento Possui
