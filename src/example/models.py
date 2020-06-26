@@ -92,7 +92,7 @@ class Servico(models.Model):
         ]
 
     def __str__(self):
-        return str(self.id) + ' - ' + self.nome
+        return `{self.id} - {self.nome}`
 
 
 class Perfil(models.Model):
