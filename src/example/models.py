@@ -95,7 +95,7 @@ class Servico(models.Model):
         ]
 
     def __str__(self):
-        return `{self.id} - {self.nome}`
+        return f'{self.id} - {self.nome}'
 
 
 class Perfil(models.Model):
@@ -108,7 +108,7 @@ class Perfil(models.Model):
         db_table = 'perfil'
 
     def __str__(self):
-        return `{self.id} - {self.tipo}`
+        return f'{self.id} - {self.tipo}'
 
 
 class Usuario(models.Model):
@@ -132,7 +132,7 @@ class Usuario(models.Model):
         ]
 
     def __str__(self):
-        return `{self.id} - {self.pessoa.nome}`
+        return f'{self.id} - {self.pessoa.nome}'
 
 
 # relacionamento Possui
@@ -192,7 +192,7 @@ class Exame(models.Model):
         ]
 
     def __str__(self):
-        return self.tipo + ' - ' + self.virus
+        return f'{self.tipo} - {self.virus}'
 
 
 class Registra(models.Model):
