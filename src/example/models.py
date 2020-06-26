@@ -6,7 +6,7 @@ class Paciente(models.Model):
     pessoa = models.OneToOneField('Pessoa', models.DO_NOTHING)
 
     class Meta:
-        managed = False
+        managed =False
         db_table = 'paciente'
 
     def __str__(self):
