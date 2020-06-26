@@ -111,7 +111,7 @@ CREATE TABLE registra (
     servico_id INT NOT NULL references servico(id),
     exame_id INT NOT NULL references exame(id),
     data_de_solicitacao DATE,
-	UNIQUE (usuario_id, servico_id, exame_id, data_de_solicitacao)
+    UNIQUE (usuario_id, servico_id, exame_id, data_de_solicitacao)
 );
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO "10737011";
