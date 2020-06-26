@@ -1,10 +1,10 @@
 from django.urls import path
+from .views import index, query1, query2
 
-from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('query1', views.query1, name='query1'),
-    path('query2', views.query2, name='query2')
+    path('', index, name='index'),
+    path('query1', query1, name='query1'),
+    path('query2', query2, name='query2')
 
 ]

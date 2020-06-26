@@ -61,17 +61,17 @@ disciplina](https://edisciplinas.usp.br/mod/forum/discuss.php?d=539785).
 
 ```SQL
 SELECT
-	paciente.nome as "Paciente",
-	exame.tipo as "Tipo",
-	exame.virus as "Vírus",
-	realiza.data_de_solicitacao as "Data de solicitação",
-	realiza.data_de_realizacao as "Data de execução"
+    paciente.nome as "Paciente",
+    exame.tipo as "Tipo",
+    exame.virus as "Vírus",
+    realiza.data_de_solicitacao as "Data de solicitação",
+    realiza.data_de_realizacao as "Data de execução"
 FROM
-	realiza
+    realiza
 INNER JOIN exame
-	ON realiza.id_exame = exame.id_exame
+    ON realiza.id_exame = exame.id_exame
 INNER JOIN paciente
-	ON realiza.id_paciente = paciente.id_paciente
+    ON realiza.id_paciente = paciente.id_paciente
 ;
 ```
 

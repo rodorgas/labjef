@@ -1,5 +1,5 @@
 INSERT INTO realiza(
-	paciente_id, exame_id, codigo_amostra, data_de_realizacao, data_de_solicitacao)
+    paciente_id, exame_id, codigo_amostra, data_de_realizacao, data_de_solicitacao)
 VALUES
 (1, 1, 1, '2020-04-03 15:04:15', '2020-04-03 07:08:29'),
 (2, 2, 2, '2020-04-29 23:25:12', '2020-04-29 23:22:32'),

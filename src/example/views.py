@@ -1,12 +1,11 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Usuario
-#from .models import Perfil
-from django.db import connection
 from collections import namedtuple
+from django.db import connection
+from django.http import HttpResponse
 from django.template import loader
+from .models import Usuario
 
-def index(request):
+
+def index():
     return HttpResponse("MAC0350/2020: Data Management Example")
 
 def query1(request):
