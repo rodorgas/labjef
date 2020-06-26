@@ -40,10 +40,6 @@ jobs:
           venv/bin/pip install -r requirements.txt
           cd ..
 
-      # Now we move the dependencies where super-linter can see them
-      - name: Move the dependencies
-        run: mv src/venv /home/runner/work/_temp/_github_workflow
-
       # Now we set the PYTHONPATH to the path of the dependencies *inside* the container
 
       ################################
@@ -52,8 +48,5 @@ jobs:
       - name: Lint Code Base
         uses: docker://github/super-linter:v2.2.0
         env:
-          VALIDATE_ALL_CODEBASE: true
-          VALIDATE_JAVASCRIPT_STANDARD: false
-          VALIDATE_JAVASCRIPT_ES: false
-          PYTHONPATH: "/github/workspace/:\
-            /github/workflow/venv/lib/python3.6/site-packages"
+          cd src/
+          venv/bin/pylint $(pwd)
