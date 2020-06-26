@@ -70,7 +70,7 @@ class Pessoa(models.Model):
         ]
 
     def __str__(self):
-        return str(self.id) + ' - ' + str(self.nome)
+        return f'{self.id} - {self.nome}'
 
 
 def valida_servico(value):
