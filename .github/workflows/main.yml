@@ -46,6 +46,6 @@ jobs:
       # Run Linter against code base #
       ################################
       - name: Lint Code Base
-        run:
+        run: |
           cd src/
           venv/bin/pylint $(pwd)
