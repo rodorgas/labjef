@@ -10,7 +10,7 @@ class Paciente(models.Model):
         db_table = 'paciente'
 
     def __str__(self):
-        return str(self.pessoa.id) + ' '+self.pessoa.nome
+        return f'{self.id} - {self.pessoa.nome}'
 
 
 class Amostra(models.Model):
@@ -29,7 +29,7 @@ class Amostra(models.Model):
         ]
 
     def __str__(self):
-        return 'Amostra '+self.codigo_amostra
+        return f'Amostra {self.codigo_amostra}'
 
 
 class Realiza(models.Model):
@@ -73,7 +73,7 @@ class Pessoa(models.Model):
         ]
 
     def __str__(self):
-        return str(self.id) + ' ' + self.nome
+        return f'{self.id} - {self.nome}'
 
 
 def valida_servico(value):
@@ -95,7 +95,7 @@ class Servico(models.Model):
         ]
 
     def __str__(self):
-        return self.nome
+        return f'{self.id} - {self.nome}'
 
 
 class Perfil(models.Model):
@@ -104,11 +104,11 @@ class Perfil(models.Model):
 
     servicos = models.ManyToManyField(Servico, through='Pertence')
 
-    def __str__(self):
-        return self.codigo + ' ' + self.tipo
-
     class Meta:
         db_table = 'perfil'
+
+    def __str__(self):
+        return f'{self.id} - {self.tipo}'
 
 
 class Usuario(models.Model):
@@ -132,7 +132,7 @@ class Usuario(models.Model):
         ]
 
     def __str__(self):
-        return str(self.id) + ' ' + self.pessoa.nome
+        return f'{self.id} - {self.pessoa.nome}'
 
 
 # relacionamento Possui
@@ -192,7 +192,7 @@ class Exame(models.Model):
         ]
 
     def __str__(self):
-        return self.tipo + ' - ' + self.virus
+        return f'{self.tipo} - {self.virus}'
 
 
 class Registra(models.Model):
