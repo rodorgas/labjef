@@ -25,6 +25,9 @@ class Amostra(models.Model):
                 fields=['paciente', 'exame', 'codigo_amostra'], name='unique_paciente_exame_codigo')
         ]
 
+    def __str__(self):
+        return f'Amostra {self.codigo_amostra}'
+
 
 class Realiza(models.Model):
     paciente = models.ForeignKey('Paciente', models.DO_NOTHING)
