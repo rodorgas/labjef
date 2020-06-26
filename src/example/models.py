@@ -105,7 +105,7 @@ class Perfil(models.Model):
         db_table = 'perfil'
 
     def __str__(self):
-        return str(self.id) + ' - ' + self.tipo
+        return `{self.id} - {self.tipo}`
 
 
 class Usuario(models.Model):
