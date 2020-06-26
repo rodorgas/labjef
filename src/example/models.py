@@ -10,7 +10,7 @@ class Paciente(models.Model):
         db_table = 'paciente'
 
     def __str__(self):
-        return str(self.id) + ' - ' + str(self.pessoa.nome)
+        return f'{self.id} - {self.pessoa.nome}'
 
 
 class Amostra(models.Model):
