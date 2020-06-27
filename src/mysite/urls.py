@@ -18,6 +18,6 @@ from example.admin import admin_site
 
 
 urlpatterns = [
-    path('example/', include('example.urls')),
-    path('admin/', admin_site.urls),
+    path('', include('example.urls')),
+    path('admin/', admin_site.urls, name='admin'),
 ]
