@@ -2,12 +2,12 @@ from collections import namedtuple
 from django.db import connection
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Usuario
 
 
-def index():
-    return HttpResponse("MAC0350/2020: Data Management Example")
+def index(request):
+    return redirect('/admin')
 
 def query1(request):
     template = loader.get_template('example/query1.html')
