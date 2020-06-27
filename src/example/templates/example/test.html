@@ -1,0 +1,19 @@
+{% extends "admin/app_index.html" %}
+
+{% block content %}
+    {{ block.super }}
+
+    <div id="content-main">
+        <div class="app-{{ app.app_label }} module">
+            <table>
+                <caption>
+                    <a href="sofisticado" class="section">Consultas</a>
+                </caption>
+                <tr>
+                    <th scope="row"><a href="../sofisticado">Sofisticado</a></th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}
