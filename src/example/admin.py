@@ -1,8 +1,9 @@
+from django.contrib.admin import AdminSite
 from django.contrib import admin
+from django.urls import path
+
 from . import models
 from .views import sofisticado
-from django.urls import path
-from django.contrib.admin import AdminSite
 
 
 class PerfilInline(admin.TabularInline):
@@ -64,11 +65,11 @@ class PerfilAdmin(admin.ModelAdmin):
 class MyAdminSite(AdminSite):
     app_index_template = 'example/test.html'
     def get_urls(self):
-         urls = super().get_urls()
-         urls += [
-             path('sofisticado/', self.admin_view(sofisticado))
-         ]
-         return urls
+        urls = super().get_urls()
+        urls += [
+            path('sofisticado/', self.admin_view(sofisticado))
+        ]
+        return urls
 
 
 admin_site = MyAdminSite()

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, query1, query2, sofisticado
+from .views import index, query1, query2
 
 
 urlpatterns = [
