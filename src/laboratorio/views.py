@@ -10,7 +10,7 @@ def index(request):
     return redirect('/admin')
 
 def query1(request):
-    template = loader.get_template('example/query1.html')
+    template = loader.get_template('laboratorio/query1.html')
     context = {'query1_result_list': Usuario.objects.all()}
 
     return HttpResponse(template.render(context, request))
@@ -27,7 +27,7 @@ def query2(request):
         """)
         result = named_tuple_fetchall(cursor)
     print(result)
-    template = loader.get_template('example/query2.html')
+    template = loader.get_template('laboratorio/query2.html')
     context = {'query2_result_list': result,}
 
     return HttpResponse(template.render(context, request))
@@ -65,4 +65,4 @@ def sofisticado(request):
 
     print(result)
 
-    return render(request, 'example/sofisticado.html', {'result': result})
+    return render(request, 'laboratorio/sofisticado.html', {'result': result})
