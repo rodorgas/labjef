@@ -1,5 +1,9 @@
+from django.contrib.admin import AdminSite
 from django.contrib import admin
+from django.urls import path
+
 from . import models
+from .views import sofisticado
 
 
 class PerfilInline(admin.TabularInline):
@@ -58,12 +62,24 @@ class PerfilAdmin(admin.ModelAdmin):
     get_servicos.short_description = 'Serviços'
 
 
-admin.site.register(models.Usuario, UsuarioAdmin)
-admin.site.register(models.Pessoa)
-admin.site.register(models.Perfil, PerfilAdmin)
-admin.site.register(models.Servico, ServicoAdmin)
-admin.site.register(models.Exame, ExameAdmin)
-admin.site.register(models.Registra)
-admin.site.register(models.Paciente)
-admin.site.register(models.Amostra)
-admin.site.register(models.Realiza)
+class MyAdminSite(AdminSite):
+    app_index_template = 'example/app_index.html'
+    def get_urls(self):
+        urls = super().get_urls()
+        urls += [
+            path('sofisticado/', self.admin_view(sofisticado))
+        ]
+        return urls
+
+
+admin_site = MyAdminSite()
+
+admin_site.register(models.Usuario, UsuarioAdmin)
+admin_site.register(models.Pessoa)
+admin_site.register(models.Perfil, PerfilAdmin)
+admin_site.register(models.Servico, ServicoAdmin)
+admin_site.register(models.Exame, ExameAdmin)
+admin_site.register(models.Registra)
+admin_site.register(models.Paciente)
+admin_site.register(models.Amostra)
+admin_site.register(models.Realiza)
