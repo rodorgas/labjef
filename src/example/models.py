@@ -208,10 +208,10 @@ class Registra(models.Model):
         db_table = 'registra'
         constraints = [
             models.UniqueConstraint(
-                fields=['usuario', 'servico', 'exame', 'data_de_solicitacao'],
+                fields=['usuario', 'servico', 'exame ', 'data_de_solicitacao'],
                 name='unique_registra'
             )
         ]
 
     def __str__(self):
-        return str(self.id)+' - ' + str(self.data_de_solicitacao)
+        return f'{self.id} - {self.data_de_solicitacao}'
