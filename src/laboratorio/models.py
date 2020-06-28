@@ -215,3 +215,5 @@ class Registra(models.Model):
 
     def __str__(self):
         return f'{self.id} - {self.data_de_solicitacao}'
+
+    

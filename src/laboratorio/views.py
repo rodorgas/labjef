@@ -155,3 +155,5 @@ def agrupado(request):
         result = cursor.fetchall()
 
     return render(request, 'laboratorio/agrupado.html', {'result': result})
+
+
