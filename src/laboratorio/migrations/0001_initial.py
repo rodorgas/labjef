@@ -31,20 +31,20 @@ class Migration(migrations.Migration):
                 ('data_de_nascimento', models.DateTimeField(verbose_name='data de nascimento')),
                 ('login', models.CharField(max_length=255)),
                 ('senha', models.CharField(max_length=255)),
-                ('cpf_tutor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, to='example.Usuario')),
+                ('cpf_tutor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, to='laboratorio.Usuario')),
             ],
         ),
         migrations.CreateModel(
             name='Usuario_Possui_Perfil',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('perfil', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='example.Perfil')),
-                ('usuario', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='example.Usuario')),
+                ('perfil', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='laboratorio.Perfil')),
+                ('usuario', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='laboratorio.Usuario')),
             ],
         ),
         migrations.AddField(
             model_name='usuario',
             name='perfis',
-            field=models.ManyToManyField(through='example.Usuario_Possui_Perfil', to='example.Perfil'),
+            field=models.ManyToManyField(through='laboratorio.Usuario_Possui_Perfil', to='laboratorio.Perfil'),
         ),
     ]

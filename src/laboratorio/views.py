@@ -11,7 +11,7 @@ def index(request):
 
 
 def query1(request):
-    template = loader.get_template('example/query1.html')
+    template = loader.get_template('laboratorio/query1.html')
     context = {'query1_result_list': Usuario.objects.all()}
 
     return HttpResponse(template.render(context, request))
@@ -29,7 +29,7 @@ def query2(request):
         """)
         result = named_tuple_fetchall(cursor)
     print(result)
-    template = loader.get_template('example/query2.html')
+    template = loader.get_template('laboratorio/query2.html')
     context = {'query2_result_list': result, }
 
     return HttpResponse(template.render(context, request))
@@ -65,7 +65,7 @@ def sofisticado(request):
         """)
         result = cursor.fetchall()
 
-    return render(request, 'example/sofisticado.html', {'result': result})
+    return render(request, 'laboratorio/sofisticado.html', {'result': result})
 
 
 def eficiencia(request):
@@ -85,7 +85,7 @@ def eficiencia(request):
         """)
         result = cursor.fetchall()
 
-    return render(request, 'example/eficiencia.html', {'result': result})
+    return render(request, 'laboratorio/eficiencia.html', {'result': result})
 
 
 def servicoUsuario(request):
@@ -107,7 +107,7 @@ def servicoUsuario(request):
         """)
         result = cursor.fetchall()
 
-    return render(request, 'example/servicoUsuario.html', {'result': result})
+    return render(request, 'laboratorio/servicoUsuario.html', {'result': result})
 
 
 def servicoTutelado(request):
@@ -123,7 +123,7 @@ def servicoTutelado(request):
         """)
         result = cursor.fetchall()
 
-    return render(request, 'example/servicoTutelado.html', {'result': result})
+    return render(request, 'laboratorio/servicoTutelado.html', {'result': result})
 
 
 def agrupado(request):
@@ -154,4 +154,4 @@ def agrupado(request):
         """)
         result = cursor.fetchall()
 
-    return render(request, 'example/agrupado.html', {'result': result})
+    return render(request, 'laboratorio/agrupado.html', {'result': result})
