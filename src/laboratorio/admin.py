@@ -88,3 +88,4 @@ admin_site.register(models.Registra)
 admin_site.register(models.Paciente)
 admin_site.register(models.Amostra)
 admin_site.register(models.Realiza)
+
