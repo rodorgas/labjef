@@ -1,16 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+{% extends "admin/index.html" %}
+{% load i18n %}
 
-    <title></title>
+{% block bodyclass %}{{ block.super }} app-{{ app_label }}{% endblock %}
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo;
+<a href="{% url 'admin:index' %}">Laboratório</a>
+&rsaquo;
+<a href="{% url 'admin:index' %}">Dashboard</a>
+</div>
+{% endblock %}
+{% endif %}
+
+{% block content %}
     <style>
          body {
              font-family: Roboto;
          }
 
-        .container {
+        .row {
             display: flex;
             flex-wrap: wrap;
         }
@@ -30,10 +41,19 @@
             margin: 0 0 15px 0;
         }
 
-        .contador {
+        .dashboard #content {
+            margin: 0;
+            width: auto;
+        }
+
+        .contadores {
             display: flex;
             justify-content: space-between;
             margin: 20px 30px;
+        }
+
+        .contadores > div {
+            margin: 0 20px;
         }
 
         .numero {
@@ -42,15 +62,17 @@
         }
 
         .sumario {
-            width: 60%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .comuns {
-            width: 33%;
+            min-width: 300px;
         }
 
         .pendentes, .eficientes {
-            width: 45%;
+            flex-grow: 1;
         }
 
         table {
@@ -60,19 +82,17 @@
             text-align: left;
         }
     </style>
-</head>
-<body>
 
     <h1 style="margin-left: 10px;">Dashboard</h1>
 
-    <div class="container">
+    <div class="row">
         <section class="sumario">
             <h2>Exames</h2>
 
-            <div class="contador">
+            <div class="contadores">
                 <div>
                     <div class="numero">53</div>
-                    <div>Solicitado</div>
+                    <div>Visualizado</div>
                 </div>
 
                 <div>
@@ -115,6 +135,10 @@
             </table>
 
         </section>
+    </div>
+
+    <div class="row">
+        </section>
 
         <section class="eficientes">
             <h2>Tipo de Exames Mais Eficientes</h2>
@@ -124,6 +148,16 @@
                     <th>Tipo</th>
                     <th>Vírus</th>
                     <th>Espera</th>
+                </tr>
+                <tr>
+                    <td>Sorologia</td>
+                    <td>Sars-Cov-2</td>
+                    <td>00:02:40</td>
+                </tr>
+                <tr>
+                    <td>Sorologia</td>
+                    <td>Sars-Cov-2</td>
+                    <td>00:02:40</td>
                 </tr>
                 <tr>
                     <td>Sorologia</td>
@@ -150,9 +184,23 @@
                     <td>Sars-Cov-2</td>
                     <td>14:10:03</td>
                 </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Sorologia</td>
+                    <td>Sars-Cov-2</td>
+                    <td>14:10:03</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Sorologia</td>
+                    <td>Sars-Cov-2</td>
+                    <td>14:10:03</td>
+                </tr>
             </table>
         </section>
     </div>
 
-</body>
-</html>
+{% endblock %}
+
+
+{% block sidebar %}{% endblock %}
