@@ -88,7 +88,7 @@ def eficiencia(request):
     return render(request, 'laboratorio/eficiencia.html', {'result': result})
 
 
-def servicoUsuario(request):
+def servico_usuario(request):
     with connection.cursor() as cursor:
         cursor.execute("""
             SELECT DISTINCT 
@@ -107,10 +107,10 @@ def servicoUsuario(request):
         """)
         result = cursor.fetchall()
 
-    return render(request, 'laboratorio/servicoUsuario.html', {'result': result})
+    return render(request, 'laboratorio/servico_usuario.html', {'result': result})
 
 
-def servicoTutelado(request):
+def servico_tutelado(request):
     with connection.cursor() as cursor:
         cursor.execute("""
             SELECT DISTINCT 
@@ -123,7 +123,7 @@ def servicoTutelado(request):
         """)
         result = cursor.fetchall()
 
-    return render(request, 'laboratorio/servicoTutelado.html', {'result': result})
+    return render(request, 'laboratorio/servico_tutelado.html', {'result': result})
 
 
 def agrupado(request):
@@ -155,5 +155,3 @@ def agrupado(request):
         result = cursor.fetchall()
 
     return render(request, 'laboratorio/agrupado.html', {'result': result})
-
-
