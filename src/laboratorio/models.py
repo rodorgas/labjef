@@ -73,6 +73,7 @@ class Pessoa(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['cpf'], name='unique_cpf')
         ]
+        managed = False
 
     def __str__(self):
         return f'{self.id} - {self.nome}'
@@ -95,6 +96,7 @@ class Servico(models.Model):
             models.UniqueConstraint(
                 fields=['nome', 'classe'], name='unique_nome_classe')
         ]
+        managed = False
 
     def __str__(self):
         return f'{self.id} - {self.nome}'
@@ -108,6 +110,7 @@ class Perfil(models.Model):
 
     class Meta:
         db_table = 'perfil'
+        managed = False
 
     def __str__(self):
         return f'{self.id} - {self.tipo}'
@@ -132,6 +135,7 @@ class Usuario(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['pessoa'], name='unique_pessoa')
         ]
+        managed = False
 
     def __str__(self):
         return f'{self.id} - {self.pessoa.nome}'
@@ -148,6 +152,7 @@ class Possui(models.Model):
                 fields=['usuario', 'perfil'], name='unique_possui')
         ]
         db_table = 'possui'
+        managed = False
 
 # Tutelamento
 
@@ -181,6 +186,7 @@ class Pertence(models.Model):
             models.UniqueConstraint(
                 fields=['servico', 'perfil'], name='unique_servico_perfil')
         ]
+        managed = False
 
 
 class Exame(models.Model):
@@ -193,6 +199,7 @@ class Exame(models.Model):
             models.UniqueConstraint(
                 fields=['tipo', 'virus'], name='unique_tipo_virus')
         ]
+        managed = False
 
     def __str__(self):
         return f'{self.tipo} - {self.virus}'
@@ -212,6 +219,7 @@ class Registra(models.Model):
                 name='unique_registra'
             )
         ]
+        managed = False
 
     def __str__(self):
         return f'{self.id} - {self.data_de_solicitacao}'
