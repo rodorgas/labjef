@@ -1,7 +1,7 @@
 FILE=${shell pwd}/script/tabelas.txt
 DROP_TABLES=$(shell awk '{print "DROP TABLE " $$0 " CASCADE;\n"}' ${FILE} | paste -d" " -s -)
 INSERTS=$(shell awk '{print "${shell pwd}/sql/insert-"$$0".sql"}' ${FILE} | paste -d" " -s -)
-SCHEMA="public"
+SCHEMA="laboratorio"
 
 all: insert create drop delete
 
