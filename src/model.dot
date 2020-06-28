@@ -1,7 +1,7 @@
 digraph model_graph {
   // Dotfile by Django-Extensions graph_models
   // Created: 2020-06-03 14:33
-  // Cli Options: example
+  // Cli Options: laboratorio
 
   fontname = "Roboto"
   fontsize = 8
@@ -21,7 +21,7 @@ digraph model_graph {
   // Labels
 
 
-  example_models_Usuario [label=<
+  laboratorio_models_Usuario [label=<
     <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
     <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
     <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
@@ -103,7 +103,7 @@ digraph model_graph {
     </TABLE>
     >]
 
-  example_models_Perfil [label=<
+  laboratorio_models_Perfil [label=<
     <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
     <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
     <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
@@ -121,7 +121,7 @@ digraph model_graph {
     </TABLE>
     >]
 
-  example_models_Usuario_Possui_Perfil [label=<
+  laboratorio_models_Usuario_Possui_Perfil [label=<
     <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
     <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
     <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
@@ -160,13 +160,13 @@ digraph model_graph {
 
   // Relations
 
-  example_models_Usuario -> example_models_Usuario
+  laboratorio_models_Usuario -> laboratorio_models_Usuario
   [label=" cpf_tutor (usuario)"] [arrowhead=none, arrowtail=dot, dir=both];
 
-  example_models_Usuario_Possui_Perfil -> example_models_Usuario
+  laboratorio_models_Usuario_Possui_Perfil -> laboratorio_models_Usuario
   [label=" usuario (usuario_possui_perfil)"] [arrowhead=none, arrowtail=dot, dir=both];
 
-  example_models_Usuario_Possui_Perfil -> example_models_Perfil
+  laboratorio_models_Usuario_Possui_Perfil -> laboratorio_models_Perfil
   [label=" perfil (usuario_possui_perfil)"] [arrowhead=none, arrowtail=dot, dir=both];
 
 
