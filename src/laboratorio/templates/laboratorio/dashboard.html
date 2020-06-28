@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+
+    <title></title>
+    <style>
+         body {
+             font-family: Roboto;
+         }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        section {
+            border: solid 1px #e5e5e5;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 300;
+            color: #666;
+        }
+        h2 {
+            margin: 0 0 15px 0;
+        }
+
+        .contador {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 30px;
+        }
+
+        .numero {
+            text-align: center;
+            font-size: 48px;
+        }
+
+        .sumario {
+            width: 60%;
+        }
+
+        .comuns {
+            width: 33%;
+        }
+
+        .pendentes, .eficientes {
+            width: 45%;
+        }
+
+        table {
+            width: 100%;
+        }
+        table tr, table td {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="margin-left: 10px;">Dashboard</h1>
+
+    <div class="container">
+        <section class="sumario">
+            <h2>Exames</h2>
+
+            <div class="contador">
+                <div>
+                    <div class="numero">53</div>
+                    <div>Solicitado</div>
+                </div>
+
+                <div>
+                    <div class="numero">18</div>
+                    <div>Solicitado</div>
+                </div>
+
+                <div>
+                    <div class="numero">15</div>
+                    <div>Alterados</div>
+                </div>
+
+                <div>
+                    <div class="numero">3</div>
+                    <div>Removidos</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comuns">
+            <h2>Vírus Mais Testados</h2>
+
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Vírus</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Sars-Cov-2</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Sars-Cov-2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Sars-Cov-2</td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="eficientes">
+            <h2>Tipo de Exames Mais Eficientes</h2>
+
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Vírus</th>
+                    <th>Espera</th>
+                </tr>
+                <tr>
+                    <td>Sorologia</td>
+                    <td>Sars-Cov-2</td>
+                    <td>00:02:40</td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="pendentes">
+            <h2>Exames Pendentes</h2>
+
+            <table>
+                <tr>
+                    <th>Cód. Amostra</th>
+                    <th>Tipo</th>
+                    <th>Vírus</th>
+                    <th>Espera</th>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Sorologia</td>
+                    <td>Sars-Cov-2</td>
+                    <td>14:10:03</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+</body>
+</html>
