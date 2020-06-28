@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path
 
 from . import models
-from .views import sofisticado, eficiencia, servicoUsuario, servicoTutelado, agrupado
+from .views import sofisticado, eficiencia, servico_usuario, servico_tutelado, agrupado
 
 
 class PerfilInline(admin.TabularInline):
@@ -70,8 +70,8 @@ class MyAdminSite(AdminSite):
         urls += [
             path('sofisticado/', self.admin_view(sofisticado)),
             path('eficiencia/', self.admin_view(eficiencia)),
-            path('servicoUsuario/', self.admin_view(servicoUsuario)),
-            path('servicoTutelado/', self.admin_view(servicoTutelado)),
+            path('servico_usuario/', self.admin_view(servico_usuario)),
+            path('servico_tutelado/', self.admin_view(servico_tutelado)),
             path('agrupado/', self.admin_view(agrupado))
         ]
         return urls
