@@ -1,4 +1,4 @@
-SET search_path TO public;
+SET search_path TO laboratorio;
 
 INSERT INTO pessoa (
   id,
@@ -400,8 +400,8 @@ INSERT INTO possui(
 (15, 4);
 insert into servico(id,nome, classe)
 values (1,'Alterar exame','alteração'),(2,'Solicitar exame', 'inserção'),
-	   (3,'Visualizar exame','visualização'),(4,'Remover exame', 'remoção'),
-	   (5,'Segunda via', 'visualização');
+       (3,'Visualizar exame','visualização'),(4,'Remover exame', 'remoção'),
+       (5,'Segunda via', 'visualização');
 
 
 ALTER SEQUENCE servico_id_seq RESTART WITH 6;
@@ -453,10 +453,10 @@ ALTER SEQUENCE paciente_id_seq RESTART WITH 11;
 insert into pertence(perfil_id, servico_id)
 values (1,1),(1,2),(1,3),(1,4),(1,5),
        (2,3),
-	   (3,1),(3,2),(3,3),
-	   (4,3),
-	   (5,1),(5,2),(5,3), (5,5),
-	   (6,1),(6,2),(6,3),(6,4), (6,5);
+       (3,1),(3,2),(3,3),
+       (4,3),
+       (5,1),(5,2),(5,3), (5,5),
+       (6,1),(6,2),(6,3),(6,4), (6,5);
 INSERT INTO exame(id, tipo, virus)
   values
   (1,'PCR','Sars-CoV-2'),
@@ -481,7 +481,7 @@ VALUES
   (7, 3, 9, 'Raspagem no pênis', 'Secreção do pênis'),
   (7, 2, 10, 'Coleta de sangue', 'Sangue');
 INSERT INTO realiza(
-	paciente_id, exame_id, codigo_amostra, data_de_realizacao, data_de_solicitacao)
+    paciente_id, exame_id, codigo_amostra, data_de_realizacao, data_de_solicitacao)
 VALUES
 (1, 1, 1, '2020-04-03 15:04:15', '2020-04-03 07:08:29'),
 (2, 2, 2, '2020-04-29 23:25:12', '2020-04-29 23:22:32'),
@@ -547,11 +547,11 @@ VALUES
   (14,5,1,'2020-10-01 11:04:15'),(14,5,2,'2020-07-24 19:35:12'),
   (15,5,3,'2020-08-30 08:16:10');
 INSERT INTO tutelamento(
-	usuario_tutelado_id, tutor_id, servico_id, perfil_id, data_de_inicio, data_de_termino)
-	VALUES (10,2,3,4,'2016-03-02','2018-03-02'),
-		   (11,8,3,4,'2016-07-02', NULL),
-		   (12,2,3,2,'2019-04-02','2019-04-02'),
-		   (13,5,3,2,'2019-04-02','2019-04-02'),
-		   (14,2,3,5,'2017-08-02', NULL),
-		   (15,8,3,5,'2015-07-10', NULL),
-		   (15,8,2,5,'2015-07-05', NULL);
+    usuario_tutelado_id, tutor_id, servico_id, perfil_id, data_de_inicio, data_de_termino)
+    VALUES (10,2,3,4,'2016-03-02','2018-03-02'),
+           (11,8,3,4,'2016-07-02', NULL),
+           (12,2,3,2,'2019-04-02','2019-04-02'),
+           (13,5,3,2,'2019-04-02','2019-04-02'),
+           (14,2,3,5,'2017-08-02', NULL),
+           (15,8,3,5,'2015-07-10', NULL),
+           (15,8,2,5,'2015-07-05', NULL);
