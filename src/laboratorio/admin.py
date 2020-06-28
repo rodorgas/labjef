@@ -4,7 +4,7 @@ from django.urls import path
 
 from . import models
 from .views import (sofisticado, eficiencia, servico_usuario,
-                   servico_tutelado, agrupado, dashboard)
+                    servico_tutelado, agrupado, dashboard)
 
 
 class PerfilInline(admin.TabularInline):
