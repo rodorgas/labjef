@@ -96,13 +96,13 @@ def servicoUsuario(request):
                 servico.classe
             FROM servico
             INNER JOIN pertence
-                ON servico.id_servico=pertence.id_servico
+                ON servico.id=pertence.id
             INNER JOIN perfil
-                ON pertence.id_perfil=perfil.id_perfil
+                ON pertence.id=perfil.id
             INNER JOIN possui
-                ON perfil.id_perfil = possui.id_perfil
+                ON perfil.id = possui.id
             INNER JOIN usuario
-                ON possui.id_usuario = usuario.id_usuario
+                ON possui.id = usuario.id
             ;
         """)
         result = cursor.fetchall()
@@ -118,7 +118,7 @@ def servicoTutelado(request):
                 classe
             FROM servico
             INNER JOIN tutelamento
-                ON servico.id_servico=tutelamento.id_servico
+                ON servico.id=tutelamento.id
             ;
         """)
         result = cursor.fetchall()
@@ -133,22 +133,22 @@ def agrupado(request):
                 servico.nome,
                 servico.classe,
                 perfil.tipo as "Perfil",
-                count(registra.id_servico) as "Quantidade"
+                count(registra.id) as "Quantidade"
             FROM registra
 
             INNER JOIN servico
-                ON registra.id_servico = servico.id_servico
+                ON registra.id = servico.id
 
             INNER JOIN usuario
-                ON usuario.id_usuario = registra.id_usuario
+                ON usuario.id = registra.id
 
             INNER JOIN possui
-                ON possui.id_usuario = usuario.id_usuario
+                ON possui.id = usuario.id
 
             INNER JOIN perfil
-                ON perfil.id_perfil = possui.id_perfil
+                ON perfil.id = possui.id
 
-            GROUP BY servico.id_servico, perfil.id_perfil
+            GROUP BY servico.id, perfil.id
 
             ORDER BY "Quantidade";
         """)

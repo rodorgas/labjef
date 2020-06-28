@@ -9,13 +9,15 @@
 </head>
 
 <body>
-    <h1>Exames realizados</h1>
+    <h1>Serviços utilizados pelos usuário</h1>
 
     {% for row in result %}
     <ul>
-        {% for col in row %}
-        <li>{{ col }}</li>
-        {% endfor %}
+        <li>
+            {% for col in row %}
+            <strong> Serviço: </strong> {{ col }}
+            {% endfor %}
+        </li>
     </ul>
     {% endfor %}
 </body>
