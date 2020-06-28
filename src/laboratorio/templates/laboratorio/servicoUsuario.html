@@ -13,9 +13,11 @@
 
     {% for row in result %}
     <ul>
-        {% for col in row %}
-        <li>{{ col }}</li>
-        {% endfor %}
+        <li>
+            {% for col in row %}
+            <strong> Serviço: </strong> {{ col }}
+            {% endfor %}
+        </li>
     </ul>
     {% endfor %}
 </body>
