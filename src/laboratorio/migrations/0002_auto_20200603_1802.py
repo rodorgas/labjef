@@ -10,17 +10,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='usuario',
-            name='data_de_nascimento',
-            field=models.DateField(verbose_name='data de nascimento'),
-        ),
-        migrations.AddConstraint(
-            model_name='usuario',
-            constraint=models.UniqueConstraint(fields=('login',), name='unique_login'),
-        ),
-        migrations.AddConstraint(
-            model_name='usuario_possui_perfil',
-            constraint=models.UniqueConstraint(fields=('usuario', 'perfil'), name='unique_usuario_perfil'),
-        ),
     ]
