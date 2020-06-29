@@ -116,7 +116,7 @@ def virus_mais_testados():
                 ON realiza.exame_id = exame.id
             GROUP BY virus
             ORDER BY "Quantidade" DESC
-
+            LIMIT 3
         """)
 
         return cursor.fetchall()
