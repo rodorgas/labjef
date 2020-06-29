@@ -1,0 +1,196 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% block bodyclass %}{{ block.super }} app-{{ app_label }}{% endblock %}
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+    &rsaquo; <a href="..">Laboratório</a>
+    &rsaquo; Dashboard
+</div>
+{% endblock %}
+{% endif %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Roboto;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    section {
+        border: solid 1px #e5e5e5;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 300;
+        color: #666;
+    }
+
+    h2 {
+        margin: 0 0 15px 0;
+    }
+
+    .dashboard #content {
+        margin: 0;
+        width: auto;
+        max-width: 1280px;
+        margin: auto;
+    }
+
+    .contadores {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 30px;
+    }
+
+    .contadores>div {
+        margin: 0 20px;
+    }
+
+    .numero {
+        text-align: center;
+        font-size: 48px;
+    }
+
+    .sumario {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .comuns {
+        min-width: 300px;
+    }
+
+    .pendentes,
+    .eficientes {
+        flex-grow: 1;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table tr,
+    table td {
+        text-align: left;
+    }
+</style>
+
+<h1 style="margin-left: 10px;">Dashboard</h1>
+
+<div class="row">
+    <section class="sumario">
+        <h2>Exames</h2>
+        <div class="contadores">
+            <div>
+                <div class="numero">{{result.contadores.visualizados.0.0}}</div>
+                <div>Visualizado</div>
+            </div>
+
+            <div>
+                <div class="numero">{{result.contadores.solicitados.0.0}}</div>
+                <div>Solicitado</div>
+            </div>
+
+            <div>
+                <div class="numero">{{result.contadores.alterados.0.0}}</div>
+                <div>Alterados</div>
+            </div>
+
+            <div>
+                <div class="numero">{{result.contadores.removidos.0.0}}</div>
+                <div>Removidos</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comuns">
+        <h2>Vírus Mais Testados</h2>
+
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Vírus</th>
+                <th>Testes</th>
+            </tr>
+
+            {%for v in result.virus%}
+            <tr>
+                <td> {{ forloop.counter }}</td>
+                <td>{{v.0}}</td>
+                <td>{{v.1}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </section>
+</div>
+
+<div class="row">
+    </section>
+
+    <section class="eficientes">
+        <h2>Tipo de Exames Mais Eficientes</h2>
+
+        <table>
+            <tr>
+                <th>Tipo</th>
+                <th>Vírus</th>
+                <th>Espera</th>
+            </tr>
+
+            {% for e in result.eficiente%}
+            <tr>
+                <td>{{e.0}}</td>
+                <td>{{e.1}}</td>
+                <td>{{e.2}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+    <section class="pendentes">
+        <h2>Exames Pendentes</h2>
+
+        <table>
+            <tr>
+                <th>Cód. Amostra</th>
+                <th>Tipo</th>
+                <th>Vírus</th>
+                <th>Espera</th>
+            </tr>
+            {%for p in result.pendentes%}
+            <tr>
+                <td>{{p.0}}</td>
+                <td>{{p.1}}</td>
+                <td>{{p.2}}</td>
+                <td>{{p.3}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </section>
+</div>
+
+{% endblock %}
+
+
+{% block sidebar %}{% endblock %}

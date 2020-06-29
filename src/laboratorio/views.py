@@ -44,37 +44,91 @@ def named_tuple_fetchall(cursor):
     return result
 
 
-def sofisticado(request):
+def exames_solicitados(cursor):
+    cursor.execute("""
+        select count(registra.id)
+        from registra
+        inner join servico
+        on registra.servico_id = servico.id
+        where servico_id = 2
+        ;
+    """)
+    return cursor.fetchall()
+
+
+def exames_visualizados(cursor):
+    cursor.execute("""
+        select count(registra.id)
+        from registra
+        inner join servico
+        on registra.servico_id = servico.id
+        where servico_id = 3 or servico_id = 5
+        ;
+
+    """)
+    return cursor.fetchall()
+
+
+def exames_alterados(cursor):
+    cursor.execute("""
+        select count(registra.id)
+        from registra
+        inner join servico
+        on registra.servico_id = servico.id
+        where servico_id = 1
+        ;
+    """)
+    return cursor.fetchall()
+
+
+def exames_removidos(cursor):
+    cursor.execute("""
+        select count(registra.id)
+        from registra
+        inner join servico
+        on registra.servico_id = servico.id
+        where servico_id = 4
+        ;
+    """)
+    return cursor.fetchall()
+
+
+def exame_numbers():
+    results = {}
+    cursor = connection.cursor()
+    results["solicitados"] = exames_solicitados(cursor)
+    results["visualizados"] = exames_visualizados(cursor)
+    results["alterados"] = exames_alterados(cursor)
+    results["removidos"] = exames_removidos(cursor)
+
+    return results
+
+
+def virus_mais_testados():
     with connection.cursor() as cursor:
         cursor.execute("""
             SELECT
-                pessoa.nome,
-                exame.tipo,
-                exame.virus,
-                realiza.data_de_solicitacao,
-                realiza.data_de_realizacao
+                virus,
+                count(realiza.id) as "Quantidade"
             FROM
-                realiza
-            INNER JOIN exame
+                exame
+            INNER JOIN realiza
                 ON realiza.exame_id = exame.id
-            INNER JOIN paciente
-                ON realiza.paciente_id = paciente.id
-            INNER JOIN pessoa
-                ON paciente.pessoa_id = pessoa.id
-            ;
+            GROUP BY virus
+            ORDER BY "Quantidade" DESC
+            LIMIT 3
         """)
-        result = cursor.fetchall()
 
-    return render(request, 'laboratorio/sofisticado.html', {'result': result})
+        return cursor.fetchall()
 
 
-def eficiencia(request):
+def eficiencia():
     with connection.cursor() as cursor:
         cursor.execute("""
             SELECT
                 tipo,
-                virus, 
-                realiza.data_de_realizacao - realiza.data_de_solicitacao as "Tempo de espera"
+                virus,
+                date_trunc('second', realiza.data_de_realizacao - realiza.data_de_solicitacao) as "Tempo de espera"
             FROM
                 exame
             INNER JOIN realiza
@@ -85,73 +139,35 @@ def eficiencia(request):
         """)
         result = cursor.fetchall()
 
-    return render(request, 'laboratorio/eficiencia.html', {'result': result})
+        return result
 
 
-def servico_usuario(request):
+def exames_pendentes():
     with connection.cursor() as cursor:
         cursor.execute("""
-            SELECT DISTINCT 
-                servico.nome, 
-                servico.classe
-            FROM servico
-            INNER JOIN pertence
-                ON servico.id=pertence.id
-            INNER JOIN perfil
-                ON pertence.id=perfil.id
-            INNER JOIN possui
-                ON perfil.id = possui.id
-            INNER JOIN usuario
-                ON possui.id = usuario.id
-            ;
+        SELECT
+            realiza.codigo_amostra,
+            tipo,
+            virus,
+            date_trunc('second', now() - realiza.data_de_solicitacao) as "espera"
+        FROM
+            realiza
+        INNER JOIN exame
+            ON exame.id = realiza.exame_id
+        INNER JOIN amostra
+            ON amostra.codigo_amostra = realiza.codigo_amostra
+        WHERE
+            realiza.data_de_realizacao IS NULL
         """)
         result = cursor.fetchall()
 
-    return render(request, 'laboratorio/servico_usuario.html', {'result': result})
+        return result
 
 
-def servico_tutelado(request):
-    with connection.cursor() as cursor:
-        cursor.execute("""
-            SELECT DISTINCT 
-                nome, 
-                classe
-            FROM servico
-            INNER JOIN tutelamento
-                ON servico.id=tutelamento.id
-            ;
-        """)
-        result = cursor.fetchall()
-
-    return render(request, 'laboratorio/servico_tutelado.html', {'result': result})
-
-
-def agrupado(request):
-    with connection.cursor() as cursor:
-        cursor.execute("""
-            SELECT
-                servico.nome,
-                servico.classe,
-                perfil.tipo as "Perfil",
-                count(registra.id) as "Quantidade"
-            FROM registra
-
-            INNER JOIN servico
-                ON registra.id = servico.id
-
-            INNER JOIN usuario
-                ON usuario.id = registra.id
-
-            INNER JOIN possui
-                ON possui.id = usuario.id
-
-            INNER JOIN perfil
-                ON perfil.id = possui.id
-
-            GROUP BY servico.id, perfil.id
-
-            ORDER BY "Quantidade";
-        """)
-        result = cursor.fetchall()
-
-    return render(request, 'laboratorio/agrupado.html', {'result': result})
+def dashboard(request):
+    dados = {}
+    dados["virus"] = virus_mais_testados()
+    dados["eficiente"] = eficiencia()
+    dados["contadores"] = exame_numbers()
+    dados["pendentes"] = exames_pendentes()
+    return render(request, 'laboratorio/dashboard.html', {"result": dados})

@@ -1,4 +1,8 @@
-{% extends "admin/app_index.html" %}
+{% extends "admin/index.html" %}
+
+{% block sidebar %}
+{{ block.super }}
+{% endblock %}
 
 {% block content %}
 {{ block.super }}
@@ -7,10 +11,10 @@
     <div class="app-{{ app.app_label }} module">
         <table>
             <caption>
-                <a href="dashboard" class="section">Consultas</a>
+                <a href="laboratorio/dashboard" class="section">Consultas</a>
             </caption>
             <tr>
-                <th scope="row"><a href="dashboard">Dashboard</a>
+                <th scope="row"><a href="laboratorio/dashboard">Dashboard</a>
                 </th>
                 <td></td>
             </tr>
@@ -18,3 +22,4 @@
     </div>
 </div>
 {% endblock %}
+
