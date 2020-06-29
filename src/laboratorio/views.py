@@ -119,16 +119,16 @@ def virus_mais_testados():
 
         """)
 
-    return cursor.fetchall()
+        return cursor.fetchall()
 
 
-def eficiencia(request):
+def eficiencia():
     with connection.cursor() as cursor:
         cursor.execute("""
             SELECT
                 tipo,
                 virus, 
-                realiza.data_de_realizacao - realiza.data_de_solicitacao as "Tempo de espera"
+                to_char(realiza.data_de_realizacao - realiza.data_de_solicitacao, 'HH:MM:SS') as "Tempo de espera"
             FROM
                 exame
             INNER JOIN realiza
@@ -139,7 +139,7 @@ def eficiencia(request):
         """)
         result = cursor.fetchall()
 
-    return result
+        return result
 
 
 def exames_pendentes():
@@ -149,7 +149,7 @@ def exames_pendentes():
             realiza.codigo_amostra, 
             tipo, 
             virus, 
-            date_trunc('day', now() - realiza.data_de_solicitacao) as "espera"
+            to_char(now() - realiza.data_de_solicitacao, 'HH:MM:SS') as "espera"
         FROM 
             realiza
         INNER JOIN exame 
@@ -157,12 +157,17 @@ def exames_pendentes():
         INNER JOIN amostra
             ON amostra.codigo_amostra = realiza.codigo_amostra
         WHERE 
-            realiza.data_de_realizacao IS NULL
+            realiza.data_de_realizacao IS NOT NULL
         """)
         result = cursor.fetchall()
 
-    return result
+        return result
 
 
 def dashboard(request):
-    return render(request, 'laboratorio/dashboard.html')
+    dados = {}
+    dados["virus"] = virus_mais_testados()
+    dados["eficiente"] = eficiencia()
+    dados["contadores"] = exame_numbers()
+    dados["pendentes"] = exames_pendentes()
+    return render(request, 'laboratorio/dashboard.html', {"result": dados})

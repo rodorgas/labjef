@@ -6,203 +6,189 @@
 {% if not is_popup %}
 {% block breadcrumbs %}
 <div class="breadcrumbs">
-<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-&rsaquo;
-<a href="{% url 'admin:index' %}">Laboratório</a>
-&rsaquo;
-<a href="{% url 'admin:index' %}">Dashboard</a>
+    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+    &rsaquo;
+    <a href="{% url 'admin:index' %}">Laboratório</a>
+    &rsaquo;
+    <a href="{% url 'admin:index' %}">Dashboard</a>
 </div>
 {% endblock %}
 {% endif %}
 
 {% block content %}
-    <style>
-         body {
-             font-family: Roboto;
-         }
+<style>
+    body {
+        font-family: Roboto;
+    }
 
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-        section {
-            border: solid 1px #e5e5e5;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px;
-        }
+    section {
+        border: solid 1px #e5e5e5;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 300;
-            color: #666;
-        }
-        h2 {
-            margin: 0 0 15px 0;
-        }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 300;
+        color: #666;
+    }
 
-        .dashboard #content {
-            margin: 0;
-            width: auto;
-        }
+    h2 {
+        margin: 0 0 15px 0;
+    }
 
-        .contadores {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 30px;
-        }
+    .dashboard #content {
+        margin: 0;
+        width: auto;
+    }
 
-        .contadores > div {
-            margin: 0 20px;
-        }
+    .contadores {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 30px;
+    }
 
-        .numero {
-            text-align: center;
-            font-size: 48px;
-        }
+    .contadores>div {
+        margin: 0 20px;
+    }
 
-        .sumario {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
+    .numero {
+        text-align: center;
+        font-size: 48px;
+    }
 
-        .comuns {
-            min-width: 300px;
-        }
+    .sumario {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
 
-        .pendentes, .eficientes {
-            flex-grow: 1;
-        }
+    .comuns {
+        min-width: 300px;
+    }
 
-        table {
-            width: 100%;
-        }
-        table tr, table td {
-            text-align: left;
-        }
-    </style>
+    .pendentes,
+    .eficientes {
+        flex-grow: 1;
+    }
 
-    <h1 style="margin-left: 10px;">Dashboard</h1>
+    table {
+        width: 100%;
+    }
 
-    <div class="row">
-        <section class="sumario">
-            <h2>Exames</h2>
+    table tr,
+    table td {
+        text-align: left;
+    }
+</style>
 
-            <div class="contadores">
-                <div>
-                    <div class="numero">53</div>
-                    <div>Visualizado</div>
-                </div>
+<h1 style="margin-left: 10px;">Dashboard</h1>
 
-                <div>
-                    <div class="numero">18</div>
-                    <div>Solicitado</div>
-                </div>
-
-                <div>
-                    <div class="numero">15</div>
-                    <div>Alterados</div>
-                </div>
-
-                <div>
-                    <div class="numero">3</div>
-                    <div>Removidos</div>
-                </div>
+<div class="row">
+    <section class="sumario">
+        <h2>Exames</h2>
+        <div class="contadores">
+            <div>
+                <div class="numero">{{result.contadores.visualizados.0.0}}</div>
+                <div>Visualizado</div>
             </div>
-        </section>
 
-        <section class="comuns">
-            <h2>Vírus Mais Testados</h2>
+            <div>
+                <div class="numero">{{result.contadores.solicitados.0.0}}</div>
+                <div>Solicitado</div>
+            </div>
 
-            <table>
-                <tr>
-                    <th>#</th>
-                    <th>Vírus</th>
-                    <th>Testes</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Sars-Cov-2</td>
-                    <td>24</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Sars-Cov-2</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Sars-Cov-2</td>
-                    <td>6</td>
-                </tr>
-            </table>
+            <div>
+                <div class="numero">{{result.contadores.alterados.0.0}}</div>
+                <div>Alterados</div>
+            </div>
 
-        </section>
-    </div>
+            <div>
+                <div class="numero">{{result.contadores.removidos.0.0}}</div>
+                <div>Removidos</div>
+            </div>
+        </div>
+    </section>
 
-    <div class="row">
-        </section>
+    <section class="comuns">
+        <h2>Vírus Mais Testados</h2>
 
-        <section class="eficientes">
-            <h2>Tipo de Exames Mais Eficientes</h2>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Vírus</th>
+                <th>Testes</th>
+            </tr>
 
-            <table>
-                <tr>
-                    <th>Tipo</th>
-                    <th>Vírus</th>
-                    <th>Espera</th>
-                </tr>
-                <tr>
-                    <td>Sorologia</td>
-                    <td>Sars-Cov-2</td>
-                    <td>00:02:40</td>
-                </tr>
-                <tr>
-                    <td>Sorologia</td>
-                    <td>Sars-Cov-2</td>
-                    <td>00:02:40</td>
-                </tr>
-                <tr>
-                    <td>Sorologia</td>
-                    <td>Sars-Cov-2</td>
-                    <td>00:02:40</td>
-                </tr>
-            </table>
+            {%for v in result.virus%}
+            <tr>
+                <td> {{ forloop.counter }}</td>
+                <td>{{v.0}}</td>
+                <td>{{v.1}}</td>
+            </tr>
+            {% endfor %}
+        </table>
 
-        </section>
+    </section>
+</div>
 
-        <section class="pendentes">
-            <h2>Exames Pendentes</h2>
+<div class="row">
+    </section>
 
-            <table>
-                <tr>
-                    <th>Cód. Amostra</th>
-                    <th>Tipo</th>
-                    <th>Vírus</th>
-                    <th>Espera</th>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Sorologia</td>
-                    <td>Sars-Cov-2</td>
-                    <td>14:10:03</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Sorologia</td>
-                    <td>Sars-Cov-2</td>
-                    <td>14:10:03</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Sorologia</td>
-                    <td>Sars-Cov-2</td>
-                    <td>14:10:03</td>
-                </tr>
-            </table>
-        </section>
-    </div>
+    <section class="eficientes">
+        <h2>Tipo de Exames Mais Eficientes</h2>
+
+        <table>
+            <tr>
+                <th>Tipo</th>
+                <th>Vírus</th>
+                <th>Espera</th>
+            </tr>
+
+            {% for e in result.eficiente%}
+            <tr>
+                <td>{{e.0}}</td>
+                <td>{{e.1}}</td>
+                <td>{{e.2}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+    <section class="pendentes">
+        <h2>Exames Pendentes</h2>
+
+        <table>
+            <tr>
+                <th>Cód. Amostra</th>
+                <th>Tipo</th>
+                <th>Vírus</th>
+                <th>Espera</th>
+            </tr>
+            {%for p in result.pendentes%}
+            <tr>
+                <td>{{p.0}}</td>
+                <td>{{p.1}}</td>
+                <td>{{p.2}}</td>
+                <td>{{p.3}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </section>
+</div>
 
 {% endblock %}
 
