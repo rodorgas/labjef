@@ -128,7 +128,7 @@ def eficiencia():
             SELECT
                 tipo,
                 virus, 
-                to_char(realiza.data_de_realizacao - realiza.data_de_solicitacao, 'HH:MM:SS') as "Tempo de espera"
+                date_trunc('second', realiza.data_de_realizacao - realiza.data_de_solicitacao) as "Tempo de espera"
             FROM
                 exame
             INNER JOIN realiza
@@ -149,7 +149,7 @@ def exames_pendentes():
             realiza.codigo_amostra, 
             tipo, 
             virus, 
-            to_char(now() - realiza.data_de_solicitacao, 'HH:MM:SS') as "espera"
+            date_trunc('second', now() - realiza.data_de_solicitacao) as "espera"
         FROM 
             realiza
         INNER JOIN exame 
