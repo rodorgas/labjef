@@ -107,10 +107,10 @@ def exame_numbers():
 def virus_mais_testados():
     with connection.cursor() as cursor:
         cursor.execute("""
-            SELECT 
-                virus, 
+            SELECT
+                virus,
                 count(realiza.id) as "Quantidade"
-            FROM 
+            FROM
                 exame
             INNER JOIN realiza
                 ON realiza.exame_id = exame.id
@@ -127,7 +127,7 @@ def eficiencia():
         cursor.execute("""
             SELECT
                 tipo,
-                virus, 
+                virus,
                 date_trunc('second', realiza.data_de_realizacao - realiza.data_de_solicitacao) as "Tempo de espera"
             FROM
                 exame
@@ -145,18 +145,18 @@ def eficiencia():
 def exames_pendentes():
     with connection.cursor() as cursor:
         cursor.execute("""
-        SELECT 
-            realiza.codigo_amostra, 
-            tipo, 
-            virus, 
+        SELECT
+            realiza.codigo_amostra,
+            tipo,
+            virus,
             date_trunc('second', now() - realiza.data_de_solicitacao) as "espera"
-        FROM 
+        FROM
             realiza
-        INNER JOIN exame 
+        INNER JOIN exame
             ON exame.id = realiza.exame_id
         INNER JOIN amostra
             ON amostra.codigo_amostra = realiza.codigo_amostra
-        WHERE 
+        WHERE
             realiza.data_de_realizacao IS NULL
         """)
         result = cursor.fetchall()
