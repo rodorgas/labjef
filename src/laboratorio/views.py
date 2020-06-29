@@ -157,7 +157,7 @@ def exames_pendentes():
         INNER JOIN amostra
             ON amostra.codigo_amostra = realiza.codigo_amostra
         WHERE 
-            realiza.data_de_realizacao IS NOT NULL
+            realiza.data_de_realizacao IS NULL
         """)
         result = cursor.fetchall()
 
