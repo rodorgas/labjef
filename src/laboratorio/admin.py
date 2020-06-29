@@ -63,6 +63,7 @@ class PerfilAdmin(admin.ModelAdmin):
 
 
 class MyAdminSite(AdminSite):
+    index_template = 'laboratorio/index.html'
     app_index_template = 'laboratorio/app_index.html'
 
     def get_urls(self):

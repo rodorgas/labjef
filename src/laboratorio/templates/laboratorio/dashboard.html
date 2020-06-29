@@ -7,10 +7,8 @@
 {% block breadcrumbs %}
 <div class="breadcrumbs">
     <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-    &rsaquo;
-    <a href="{% url 'admin:index' %}">Laboratório</a>
-    &rsaquo;
-    <a href="{% url 'admin:index' %}">Dashboard</a>
+    &rsaquo; <a href="..">Laboratório</a>
+    &rsaquo; Dashboard
 </div>
 {% endblock %}
 {% endif %}
@@ -50,6 +48,8 @@
     .dashboard #content {
         margin: 0;
         width: auto;
+        max-width: 1280px;
+        margin: auto;
     }
 
     .contadores {
