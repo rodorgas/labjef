@@ -146,18 +146,19 @@ def exames_pendentes():
     with connection.cursor() as cursor:
         cursor.execute("""
         SELECT
-            realiza.codigo_amostra,
+            paciente.id,
+            codigo_amostra,
             tipo,
             virus,
-            date_trunc('second', now() - realiza.data_de_solicitacao) as "espera"
+            date_trunc('second', now() - data_de_solicitacao) as "espera"
         FROM
             realiza
         INNER JOIN exame
             ON exame.id = realiza.exame_id
-        INNER JOIN amostra
-            ON amostra.codigo_amostra = realiza.codigo_amostra
+        INNER JOIN paciente
+            ON paciente.id = realiza.paciente_id
         WHERE
-            realiza.data_de_realizacao IS NULL
+            data_de_realizacao IS NULL
         """)
         result = cursor.fetchall()
 
