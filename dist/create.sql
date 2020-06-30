@@ -112,7 +112,7 @@ CREATE TABLE registra (
     usuario_id INT NOT NULL references usuario(id),
     servico_id INT NOT NULL references servico(id),
     exame_id INT NOT NULL references exame(id),
-    data_de_solicitacao DATE,
+    data_de_solicitacao TIMESTAMP,
     UNIQUE (usuario_id, servico_id, exame_id, data_de_solicitacao)
 );
 
