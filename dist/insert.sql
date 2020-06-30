@@ -460,7 +460,7 @@ values (1,1),(1,2),(1,3),(1,4),(1,5),
 INSERT INTO exame(id, tipo, virus)
   values
   (1,'PCR','Sars-CoV-2'),
-  (2,'Sorologia','Sars-Cov-2'),
+  (2,'Sorologia','Sars-CoV-2'),
   (3,'Peniscopia','HPV'),
   (4,'Papanicolau','HPV'),
   (5,'PCR','H1N1');
