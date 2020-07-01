@@ -44,9 +44,7 @@ class Realiza(models.Model):
         db_table = 'realiza'
         constraints = [
             models.UniqueConstraint(
-                fields=[
-                    'paciente', 'exame', 'data_de_realizacao',
-                    'data_de_solicitacao'],
+                fields=['paciente', 'exame', 'data_de_realizacao'],
                 name='unique_key')
         ]
 
