@@ -142,23 +142,21 @@ def eficiencia():
         return result
 
 
-def exames_pendentes():
+def usuarios_mais_ativos():
     with connection.cursor() as cursor:
         cursor.execute("""
-        SELECT
-            paciente.id,
-            codigo_amostra,
-            tipo,
-            virus,
-            date_trunc('second', now() - data_de_solicitacao) as "espera"
-        FROM
-            realiza
-        INNER JOIN exame
-            ON exame.id = realiza.exame_id
-        INNER JOIN paciente
-            ON paciente.id = realiza.paciente_id
-        WHERE
-            data_de_realizacao IS NULL
+        SELECT 
+            pessoa.nome, 
+            count(usuario.id) as "total" 
+        FROM 
+            registra 
+        INNER JOIN usuario 
+            ON usuario.id = registra.usuario_id 
+        INNER JOIN pessoa 
+            ON pessoa.id = usuario.pessoa_id 
+        GROUP BY pessoa.nome 
+        ORDER BY "total" DESC 
+        LIMIT 5;
         """)
         result = cursor.fetchall()
 
@@ -170,5 +168,5 @@ def dashboard(request):
     dados["virus"] = virus_mais_testados()
     dados["eficiente"] = eficiencia()
     dados["contadores"] = exame_numbers()
-    dados["pendentes"] = exames_pendentes()
+    dados["ativos"] = usuarios_mais_ativos()
     return render(request, 'laboratorio/dashboard.html', {"result": dados})
