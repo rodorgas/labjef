@@ -222,4 +222,4 @@ class Registra(models.Model):
         managed = False
 
     def __str__(self):
-        return f'{self.id} - {self.data_de_solicitacao}'
+        return f'{self.id}'
