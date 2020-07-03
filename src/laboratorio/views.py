@@ -128,12 +128,17 @@ def eficiencia():
             SELECT
                 tipo,
                 virus,
-                date_trunc('second', realiza.data_de_realizacao - realiza.data_de_solicitacao) as "Tempo de espera"
+                avg(date_trunc(
+                    'second', realiza.data_de_realizacao - realiza.data_de_solicitacao
+                )) as espera_media
             FROM
                 exame
             INNER JOIN realiza
                 ON realiza.exame_id = exame.id
-            ORDER BY "Tempo de espera"
+            GROUP BY
+                tipo, virus
+            ORDER BY
+                espera_media
             LIMIT 5
             ;
         """)
