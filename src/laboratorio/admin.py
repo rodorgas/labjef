@@ -102,6 +102,11 @@ class RealizaAdmin(admin.ModelAdmin):
                     'data_de_realizacao', 'data_de_solicitacao')
 
 
+class TutelamentoAdmin(admin.ModelAdmin):
+    list_display = ('usuario_tutelado', 'tutor', 'servico',
+                    'perfil', 'data_de_inicio', 'data_de_termino')
+
+
 class MyAdminSite(AdminSite):
     index_template = 'laboratorio/index.html'
     app_index_template = 'laboratorio/app_index.html'
@@ -125,3 +130,4 @@ admin_site.register(models.Registra, RegistraAdmin)
 admin_site.register(models.Paciente, PacienteAdmin)
 admin_site.register(models.Amostra, AmostraAdmin)
 admin_site.register(models.Realiza, RealizaAdmin)
+admin_site.register(models.Tutelamento, TutelamentoAdmin)
