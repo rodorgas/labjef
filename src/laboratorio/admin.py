@@ -16,8 +16,14 @@ class ServicoInline(admin.TabularInline):
     extra = 1
 
 
+class TuteladoInline(admin.TabularInline):
+    model = models.Tutelamento
+    fk_name = 'tutor'
+    extra = 1
+
+
 class UsuarioAdmin(admin.ModelAdmin):
-    inlines = (PerfilInline,)
+    inlines = (PerfilInline, TuteladoInline)
     list_display = ('nome', 'login', 'get_perfis',
                     'instituicao', 'area_de_pesquisa', 'get_tutor')
 

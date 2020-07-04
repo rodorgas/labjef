@@ -125,8 +125,7 @@ class Usuario(models.Model):
         "self", on_delete=models.PROTECT, null=True, blank=True)
     # Esse campo não aparece nas tabelas do bd. Utilizado somente para compatibilidade com a criacao
     # de objetos
-    perfis = models.ManyToManyField(
-        Perfil, through='Possui')
+    perfis = models.ManyToManyField(Perfil, through='Possui')
 
     class Meta:
         db_table = 'usuario'
@@ -153,8 +152,6 @@ class Possui(models.Model):
         managed = False
 
 # Tutelamento
-
-
 class Tutelamento(models.Model):
     usuario_tutelado = models.ForeignKey(Usuario, on_delete=models.PROTECT)
     tutor = models.ForeignKey(
